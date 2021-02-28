@@ -211,7 +211,11 @@ def check_docs(ctx):
     Arguments:
         ctx: The context instance (passed automatically).
     """
-    ctx.run("mkdocs build -s", title="Building documentation", pty=PTY)
+    ctx.run(
+        "sphinx-build -b html docs/source docs/build",
+        title="Building documentation",
+        pty=PTY,
+    )
 
 
 @duty
@@ -338,13 +342,13 @@ def release(ctx, version):
 @duty(silent=True)
 def coverage(ctx):
     """
-    Report coverage as text and HTML.
+    Report coverage as text and XML.
 
     Arguments:
         ctx: The context instance (passed automatically).
     """
     ctx.run("coverage report --rcfile=.coveragerc", capture=False)
-    ctx.run("coverage html --rcfile=.coveragerc")
+    ctx.run("coverage xml --rcfile=.coveragerc")
 
 
 @duty

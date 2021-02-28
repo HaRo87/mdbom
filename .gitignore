@@ -12,3 +12,4 @@ site/
 poetry.lock
 .venv/
 .vscode/
+coverage.xml
