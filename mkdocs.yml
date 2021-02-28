@@ -15,7 +15,6 @@ nav:
 - Development:
   - Contributing: contributing.md
   - Coverage report: coverage.md
-- Version Selector: '../'
 
 theme:
   name: material
@@ -43,8 +42,6 @@ markdown_extensions:
 
 plugins:
 - search
-- mkdocs-versioning:
-    version: 0.1.0
 - coverage:
     html_report_dir: build/coverage
 - mkdocstrings:
@@ -52,3 +49,7 @@ plugins:
     - mdbom/mdbom
 - macros:
     module_name: docs/macros
+
+extra:
+  version:
+    provider: mike
