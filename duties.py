@@ -11,7 +11,9 @@ from duty import duty
 from git_changelog.build import Changelog, Version
 from jinja2.sandbox import SandboxedEnvironment
 
-PY_SRC_PATHS = (Path(_) for _ in ("src", "tests", "duties.py", "docs/macros.py"))
+PY_SRC_PATHS = (
+    Path(_) for _ in ("src", "tests", "duties.py", "docs/macros.py")
+)
 PY_SRC_LIST = tuple(str(_) for _ in PY_SRC_PATHS)
 PY_SRC = " ".join(PY_SRC_LIST)
 TESTING = os.environ.get("TESTING", "0") in {"1", "true"}
@@ -100,7 +102,9 @@ def update_changelog(
     """
     env = SandboxedEnvironment(autoescape=False)
     template = env.from_string(httpx.get(template_url).text)
-    changelog = Changelog(".", style=commit_style)  # noqa: W0621 (shadowing changelog)
+    changelog = Changelog(
+        ".", style=commit_style
+    )  # noqa: W0621 (shadowing changelog)
 
     if len(changelog.versions_list) == 1:
         last_version = changelog.versions_list[0]
@@ -108,12 +112,16 @@ def update_changelog(
             planned_tag = "0.1.0"
             last_version.tag = planned_tag
             last_version.url += planned_tag
-            last_version.compare_url = last_version.compare_url.replace("HEAD", planned_tag)
+            last_version.compare_url = last_version.compare_url.replace(
+                "HEAD", planned_tag
+            )
 
     lines = read_changelog(inplace_file)
     last_released = latest(lines, re.compile(version_regex))
     if last_released:
-        changelog.versions_list = unreleased(changelog.versions_list, last_released)
+        changelog.versions_list = unreleased(
+            changelog.versions_list, last_released
+        )
     rendered = template.render(changelog=changelog, inplace=True)
     lines[lines.index(marker)] = rendered
     write_changelog(inplace_file, lines)
@@ -141,7 +149,14 @@ def changelog(ctx):
     )
 
 
-@duty(pre=["check_code_quality", "check_types", "check_docs", "check_dependencies"])
+@duty(
+    pre=[
+        "check_code_quality",
+        "check_types",
+        "check_docs",
+        "check_dependencies",
+    ]
+)
 def check(ctx):  # noqa: W0613 (no use for the context argument)
     """
     Check it all!
@@ -207,7 +222,11 @@ def check_types(ctx):
     Arguments:
         ctx: The context instance (passed automatically).
     """
-    ctx.run(f"mypy --config-file config/mypy.ini {PY_SRC}", title="Type-checking", pty=PTY)
+    ctx.run(
+        f"mypy --config-file config/mypy.ini {PY_SRC}",
+        title="Type-checking",
+        pty=PTY,
+    )
 
 
 @duty(silent=True)
@@ -250,7 +269,11 @@ def docs_serve(ctx, host="127.0.0.1", port=8000):
         host: The host to serve the docs from.
         port: The port to serve the docs on.
     """
-    ctx.run(f"mkdocs serve -a {host}:{port}", title="Serving documentation", capture=False)
+    ctx.run(
+        f"mkdocs serve -a {host}:{port}",
+        title="Serving documentation",
+        capture=False,
+    )
 
 
 @duty
@@ -290,9 +313,19 @@ def release(ctx, version):
         ctx: The context instance (passed automatically).
         version: The new version number to use.
     """
-    ctx.run(f"poetry version {version}", title=f"Bumping version in pyproject.toml to {version}", pty=PTY)
-    ctx.run("git add pyproject.toml CHANGELOG.md", title="Staging files", pty=PTY)
-    ctx.run(["git", "commit", "-m", f"chore: Prepare release {version}"], title="Committing changes", pty=PTY)
+    ctx.run(
+        f"poetry version {version}",
+        title=f"Bumping version in pyproject.toml to {version}",
+        pty=PTY,
+    )
+    ctx.run(
+        "git add pyproject.toml CHANGELOG.md", title="Staging files", pty=PTY
+    )
+    ctx.run(
+        ["git", "commit", "-m", f"chore: Prepare release {version}"],
+        title="Committing changes",
+        pty=PTY,
+    )
     ctx.run(f"git tag {version}", title="Tagging commit", pty=PTY)
     if not TESTING:
         ctx.run("git push", title="Pushing commits", pty=False)
@@ -310,8 +343,8 @@ def coverage(ctx):
     Arguments:
         ctx: The context instance (passed automatically).
     """
-    ctx.run("coverage report --rcfile=config/coverage.ini", capture=False)
-    ctx.run("coverage html --rcfile=config/coverage.ini")
+    ctx.run("coverage report --rcfile=.coveragerc", capture=False)
+    ctx.run("coverage html --rcfile=.coveragerc")
 
 
 @duty
