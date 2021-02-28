@@ -1,0 +1,85 @@
+{
+    "bomFormat": "CycloneDX",
+    "components": [
+        {
+            "description": "Bash tab completion for argparse",
+            "hashes": [
+                {
+                    "alg": "MD5",
+                    "content": "cb5930e62e6c9f79da91f3785bc18c7f"
+                },
+                {
+                    "alg": "SHA-256",
+                    "content": "17f01a9b9b9ece3e6b07058eae737ad6e10de8b4e149105f84614783913aba71"
+                }
+            ],
+            "licenses": [
+                {
+                    "license": {
+                        "name": "Apache Software License"
+                    }
+                }
+            ],
+            "modified": false,
+            "name": "argcomplete",
+            "publisher": "Andrey Kislyuk",
+            "purl": "pkg:pypi/argcomplete@1.12.2",
+            "type": "library",
+            "version": "1.12.2"
+        },
+        {
+            "description": "Python package for providing Mozilla's CA Bundle.",
+            "hashes": [
+                {
+                    "alg": "MD5",
+                    "content": "9a4c30d65c718cc2217f1e457ca6dc4c"
+                },
+                {
+                    "alg": "SHA-256",
+                    "content": "8fc0819f1f30ba15bdb34cceffb9ef04d99f420f68eb75d901e9560b8749fc41"
+                }
+            ],
+            "licenses": [
+                {
+                    "license": {
+                        "name": "MPL-2.0"
+                    }
+                }
+            ],
+            "modified": false,
+            "name": "certifi",
+            "publisher": "Kenneth Reitz",
+            "purl": "pkg:pypi/certifi@2020.6.20",
+            "type": "library",
+            "version": "2020.6.20"
+        },
+        {
+            "description": "Composable command line interface toolkit",
+            "hashes": [
+                {
+                    "alg": "MD5",
+                    "content": "b4233221cacc473acd422a1d54ff4c41"
+                },
+                {
+                    "alg": "SHA-256",
+                    "content": "dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"
+                }
+            ],
+            "licenses": [
+                {
+                    "license": {
+                        "name": "BSD-3-Clause"
+                    }
+                }
+            ],
+            "modified": false,
+            "name": "click",
+            "publisher": "",
+            "purl": "pkg:pypi/click@7.1.2",
+            "type": "library",
+            "version": "7.1.2"
+        }
+    ],
+    "specVersion": "1.2",
+    "version": 1
+}

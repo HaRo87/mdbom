@@ -71,4 +71,6 @@ exclude = ["duties.py", "tests/*", "docs/*", "__init__.py"]
     "-WPS420", # pass keyword
     "-W0107", # pass keyword 
     "-WPS110", # wrong var name
+    "-WPS323", # string formatting
+    "-WPS604", # pass in class
 ]

@@ -56,4 +56,13 @@ jobs:
         env_vars: OS,PYTHON
         fail_ci_if_error: true
         path_to_write_report: ./codecov_report.gz
+
+    - name: Build docs
+      run: sphinx-build -b html docs/source docs/build
+
+    - name: Deploy docs
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/build
     
