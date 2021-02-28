@@ -11,10 +11,18 @@ class DefaultProcessor(Processor):
         super(DefaultProcessor, self).__init__(processor_name=name)
 
     def construct_urls(self, packages: List[Package]) -> List[Package]:
+        new_packages = []
         for package in packages:
-            package.url = "https://test.com"
-
-        return packages
+            new_packages.append(
+                Package(
+                    package.name,
+                    package.version,
+                    package.kind,
+                    package.licenses,
+                    "https://test.com",
+                )
+            )
+        return new_packages
 
 
 class TestProcessor(TestCase):
@@ -48,3 +56,28 @@ class TestProcessor(TestCase):
         proc = DefaultProcessor(name="Default")
         packages = proc._load_bom(filename=self.input_dir / "bom.json")
         self.assertEqual("argcomplete", packages["components"][0]["name"])
+
+    def test_get_packages_bom_success(self):
+        proc = DefaultProcessor(name="Default")
+        packages = proc.get_packages_from_bom(
+            filename=self.input_dir / "bom.json"
+        )
+        self.assertEqual("argcomplete", packages[0].name)
+        self.assertEqual("Apache Software License", packages[0].licenses)
+        self.assertEqual("library", packages[0].kind)
+        self.assertEqual("1.12.2", packages[0].version)
+        self.assertEqual(" ", packages[0].url)
+        self.assertEqual("certifi", packages[1].name)
+        self.assertEqual("click", packages[2].name)
+
+    def test_construct_urls_success(self):
+        proc = DefaultProcessor(name="Default")
+        packages = proc.get_packages_from_bom(
+            filename=self.input_dir / "bom.json"
+        )
+        packages = proc.construct_urls(packages=packages)
+        self.assertEqual("argcomplete", packages[0].name)
+        self.assertEqual("Apache Software License", packages[0].licenses)
+        self.assertEqual("library", packages[0].kind)
+        self.assertEqual("1.12.2", packages[0].version)
+        self.assertEqual("https://test.com", packages[0].url)
