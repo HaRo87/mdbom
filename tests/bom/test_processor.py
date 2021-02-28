@@ -3,7 +3,8 @@ import os
 from unittest import TestCase
 from unittest.mock import patch
 from typing import List
-from mdbom.bom.bom import Package, Processor, ProcessingError
+from mdbom.bom.bom import Package, ProcessingError
+from mdbom.bom.processor import Processor
 
 
 class DefaultProcessor(Processor):

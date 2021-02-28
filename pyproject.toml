@@ -10,7 +10,7 @@ authors = ["Robert Hansel <code@fam-hansel.de>"]
 license = "MIT License"
 readme = "README.md"
 repository = "https://github.com/HaRo87/mdbom"
-homepage = "https://github.com/HaRo87/mdbom"
+homepage = "https://haro87.github.io/mdbom/"
 include = [
     "README.md",
     "pyproject.toml"
@@ -73,4 +73,6 @@ exclude = ["duties.py", "tests/*", "docs/*", "__init__.py"]
     "-WPS110", # wrong var name
     "-WPS323", # string formatting
     "-WPS604", # pass in class
+    "-W503", # line break before binary operator
+    "-D401", # imperative mood
 ]
