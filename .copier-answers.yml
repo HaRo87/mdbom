@@ -1,0 +1,18 @@
+# Changes here will be overwritten by Copier
+_commit: 0.2.1
+_src_path: https://github.com/pawamoy/copier-poetry.git
+author_email: code@fam-hansel.de
+author_fullname: Robert Hansel
+author_username: HaRo87
+copyright_date: '2021'
+copyright_holder: Robert Hansel
+copyright_holder_email: code@fam-hansel.de
+copyright_license: MIT License
+project_description: Transform SBOM to Markdown
+project_name: Mardown SBOM
+python_package_command_line_name: mdb
+python_package_distribution_name: mdbom
+python_package_import_name: mdbom
+repository_name: mdbom
+repository_namespace: HaRo87
+repository_provider: github.com

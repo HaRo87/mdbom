@@ -1,0 +1,58 @@
+name: deploy
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+
+  release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Set up the cache
+      uses: actions/cache@v1
+      with:
+        path: .venv
+        key: release-venv-cache
+
+    - name: Setup Poetry
+      uses: Gr1N/setup-poetry@v4
+
+    - name: Setup project
+      run: poetry install
+    
+    - name: Build
+      run: poetry build
+
+    - name: Publish Package
+      run: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
+    
+    - name: GitHub Pages
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        make changelog
+        make test
+        make coverage
+        make docs
+        poetry run mkdocs-versioning deploy --force
+    - name: "Upload coverage to Codecov"
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
+    

@@ -1,0 +1,54 @@
+site_name: "Mardown SBOM"
+site_description: "Transform SBOM to Markdown"
+site_url: "https://HaRo87.github.io/mdbom"
+repo_url: "https://github.com/HaRo87/mdbom"
+repo_name: "HaRo87/mdbom"
+
+nav:
+- Home:
+  - Overview: index.md
+  - Changelog: changelog.md
+  - Credits: credits.md
+  - License: license.md
+- Code Reference:
+  - mdbom.py: reference/cli.md
+- Development:
+  - Contributing: contributing.md
+  - Coverage report: coverage.md
+- Version Selector: '../'
+
+theme:
+  name: material
+  features:
+  - navigation.tabs
+  palette:
+    scheme: slate
+    primary: teal
+    accent: purple
+
+extra_css:
+- css/mkdocstrings.css
+
+markdown_extensions:
+- admonition
+- pymdownx.emoji
+- pymdownx.magiclink
+- pymdownx.snippets:
+    check_paths: true
+- pymdownx.superfences
+- pymdownx.tabbed
+- pymdownx.tasklist
+- toc:
+    permalink: "¤"
+
+plugins:
+- search
+- mkdocs-versioning:
+    version: 0.1.0
+- coverage:
+    html_report_dir: build/coverage
+- mkdocstrings:
+    watch:
+    - mdbom/mdbom
+- macros:
+    module_name: docs/macros
