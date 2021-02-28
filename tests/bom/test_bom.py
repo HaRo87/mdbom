@@ -2,6 +2,7 @@ import pathlib
 import os
 from unittest import TestCase
 from unittest.mock import patch
+from typing import List
 from mdbom.bom.bom import Package, Processor, ProcessingError
 
 
@@ -9,7 +10,7 @@ class DefaultProcessor(Processor):
     def __init__(self, name=""):
         super(DefaultProcessor, self).__init__(processor_name=name)
 
-    def construct_urls(self, packages: [Package]) -> [Package]:
+    def construct_urls(self, packages: List[Package]) -> List[Package]:
         for package in packages:
             package.url = "https://test.com"
 

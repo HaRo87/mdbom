@@ -5,7 +5,7 @@ import json
 import logging
 import os
 from abc import ABC, abstractmethod
-from typing import NamedTuple
+from typing import Any, Dict, List, NamedTuple
 
 
 class ProcessingError(RuntimeError):
@@ -45,14 +45,17 @@ class Processor(ABC):
         else:
             raise ProcessingError("No processor name defined")
 
-    def get_packages_from_bom(self, filename="") -> [Package]:
+    def get_packages_from_bom(self, filename: str = "") -> List[Package]:
         """Get a list of packages from the BOM.
 
         Args:
             filename: The path to the BOM file.
+
+        Returns:
+            A list of packages.
         """
-        content = self._load_bom(self, filename=filename)
-        packages = [Package]
+        content = self._load_bom(filename=filename)
+        packages = []
         for component in content["components"]:
             licenses = []
             for component_license in component["licenses"]:
@@ -66,9 +69,10 @@ class Processor(ABC):
                     " ",
                 ),
             )
+        return packages
 
     @abstractmethod
-    def construct_urls(self, packages: [Package]) -> [Package]:
+    def construct_urls(self, packages: List[Package]) -> List[Package]:
         """Construct the correct package urls.
 
         Args:
@@ -76,7 +80,7 @@ class Processor(ABC):
         """
         pass
 
-    def _load_bom(self, filename="") -> []:
+    def _load_bom(self, filename: str = "") -> Dict[Any, Any]:
         if filename:
             if os.path.exists(filename):
                 with open(filename, "r") as read_file:
