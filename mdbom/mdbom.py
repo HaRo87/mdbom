@@ -9,6 +9,8 @@ import logging
 
 import click
 
+from mdbom.bom.pypi import PyPiProcessor
+
 log_handler = logging.StreamHandler()
 log_handler.setLevel(logging.INFO)
 log_formatter = logging.Formatter("%(levelname)s [%(module)s] : %(message)s")
@@ -32,4 +34,20 @@ def info():
     click.echo("for further information.")
 
 
+@click.command()
+@click.option("--in", default="bom.json", help="BOM file to process")
+@click.option("--out", default="3rd-party.md", help="Target .md file")
+def generate(input_file, output_file):
+    """Processes a given BOM file and generates the markdown file.
+
+    Args:
+        input_file: The input_file holding the BOM info.
+        output_file: The output_file where the result should be stored.
+    """
+    pypi_proc = PyPiProcessor()
+    packages = pypi_proc.get_packages_from_bom(filename=input_file)
+    click.echo(packages)
+
+
 cli.add_command(info)
+cli.add_command(generate)
