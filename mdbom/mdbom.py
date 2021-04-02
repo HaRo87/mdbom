@@ -10,6 +10,7 @@ import logging
 import click
 
 from mdbom.bom.pypi import PyPiProcessor
+from mdbom.md.md import generate_markdown
 
 log_handler = logging.StreamHandler()
 log_handler.setLevel(logging.INFO)
@@ -37,16 +38,28 @@ def info():
 @click.command()
 @click.option("--in", default="bom.json", help="BOM file to process")
 @click.option("--out", default="3rd-party.md", help="Target .md file")
-def generate(input_file, output_file):
+@click.option(
+    "--template",
+    default="template.md.jinja",
+    help="The Jinja2 template file",
+)
+def generate(input_file, output_file, template_file):
     """Processes a given BOM file and generates the markdown file.
 
     Args:
         input_file: The input_file holding the BOM info.
         output_file: The output_file where the result should be stored.
+        template_file: The template_file to be used for markdown generation.
     """
     pypi_proc = PyPiProcessor()
     packages = pypi_proc.get_packages_from_bom(filename=input_file)
-    click.echo(packages)
+    generate_markdown(
+        template=template_file,
+        file_name=output_file,
+        packages=packages,
+    )
+    click.echo("Generated markdown file:")
+    click.echo(output_file)
 
 
 cli.add_command(info)
