@@ -44,8 +44,11 @@ jobs:
     - name: Build
       run: poetry build
 
+    - name: Set test-pypi repo
+      run: poetry config repositories.testpypi https://test.pypi.org/
+
     - name: Publish Package
-      run: poetry publish --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }} --repository https://test.pypi.org/simple
+      run: poetry publish --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }} -r testpypi
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
