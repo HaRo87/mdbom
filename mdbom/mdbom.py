@@ -36,10 +36,21 @@ def info():
 
 
 @click.command()
-@click.option("--in", default="bom.json", help="BOM file to process")
-@click.option("--out", default="3rd-party.md", help="Target .md file")
+@click.option(
+    "--input",
+    "input_file",
+    default="bom.json",
+    help="BOM file to process",
+)
+@click.option(
+    "--output",
+    "output_file",
+    default="3rd-party.md",
+    help="Target .md file",
+)
 @click.option(
     "--template",
+    "template_file",
     default="template.md.jinja",
     help="The Jinja2 template file",
 )
@@ -53,6 +64,7 @@ def generate(input_file, output_file, template_file):
     """
     pypi_proc = PyPiProcessor()
     packages = pypi_proc.get_packages_from_bom(filename=input_file)
+    packages = pypi_proc.construct_urls(packages=packages)
     generate_markdown(
         template=template_file,
         file_name=output_file,
