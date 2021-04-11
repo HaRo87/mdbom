@@ -1,0 +1,59 @@
+name: deploy-test-pypi
+
+on:
+  push:
+    branches:
+      - develop
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+
+  release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Set up the cache
+      uses: actions/cache@v1
+      with:
+        path: .venv
+        key: release-venv-cache
+
+    - name: Setup Poetry
+      uses: Gr1N/setup-poetry@v4
+
+    - name: Setup project
+      run: poetry install
+    
+    - name: Test and Coverage
+      run: |
+        make test
+        make coverage
+
+    - name: Build
+      run: poetry build
+
+    - name: Publish Package
+      run: poetry publish --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }}
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        env_vars: OS,PYTHON
+        fail_ci_if_error: true
+        path_to_write_report: ./codecov_report.gz
+    
