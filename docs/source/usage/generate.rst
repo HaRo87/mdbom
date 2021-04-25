@@ -7,10 +7,9 @@ You can have a look at the `examples <https://github.com/HaRo87/mdbom/tree/devel
 provided by the MdBOM project. 
 
 Once you have a template and a BOM you should be able to generate
-a markdown file via:
+a markdown file via::
 
-.. code-block::
     mdb generate --input bom.json --output 3rd-party.md --template template.md.jinja
 
 This will take the "bom.json" file as input, collect all relevant information and 
-use the "template.md.jinja" template to generate the "3rd-party.md" file.0
+use the "template.md.jinja" template to generate the "3rd-party.md" file.
