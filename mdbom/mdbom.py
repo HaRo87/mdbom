@@ -9,8 +9,9 @@ import logging
 
 import click
 
+from mdbom.bom.processor import ProcessingError
 from mdbom.bom.pypi import PyPiProcessor
-from mdbom.md.md import generate_markdown
+from mdbom.md.md import GeneratingError, generate_markdown
 
 log_handler = logging.StreamHandler()
 log_handler.setLevel(logging.INFO)
@@ -61,15 +62,34 @@ def generate(input_file, output_file, template_file):
         input_file: The input_file holding the BOM info.
         output_file: The output_file where the result should be stored.
         template_file: The template_file to be used for markdown generation.
+
+    Raises:
+        ClickException: In case invalid input is provided.
     """
-    pypi_proc = PyPiProcessor()
-    packages = pypi_proc.get_packages_from_bom(filename=input_file)
-    packages = pypi_proc.construct_urls(packages=packages)
-    generate_markdown(
-        template=template_file,
-        file_name=output_file,
-        packages=packages,
-    )
+    try:
+        pypi_proc = PyPiProcessor()
+    except ProcessingError as pie:
+        raise click.ClickException(pie)
+
+    try:
+        packages = pypi_proc.get_packages_from_bom(filename=input_file)
+    except ProcessingError as pge:
+        raise click.ClickException(pge)
+
+    try:
+        packages = pypi_proc.construct_urls(packages=packages)
+    except ProcessingError as pce:
+        raise click.ClickException(pce)
+
+    try:
+        generate_markdown(
+            template=template_file,
+            file_name=output_file,
+            packages=packages,
+        )
+    except GeneratingError as ge:
+        raise click.ClickException(ge)
+
     click.echo("Generated markdown file:")
     click.echo(output_file)
 

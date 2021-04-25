@@ -23,3 +23,14 @@ Now you can install MdBOM via:
 .. code-block::
     pip install mdbom
 
+If you want to check your installation you can run:
+
+.. code-block::
+    mdb info
+
+which should produce an output similar to:
+
+.. code-block::
+    Check the documentation: https://haro87.github.io/mdbom/
+    for further information.
+

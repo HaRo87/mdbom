@@ -10,6 +10,8 @@ a markdown page presenting it in a more human friendly way.
    :caption: Contents:
 
    usage/installation
+   usage/bom
+   usage/generate
 
 Indices and tables
 ==================
