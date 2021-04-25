@@ -57,6 +57,8 @@ exclude = "tests/fixtures"
 
 [tool.flakehell]
 exclude = ["duties.py", "tests/*", "docs/*", "__init__.py"]
+# fix flakehell error according to https://github.com/flakehell/flakehell/issues/10#issuecomment-822720074
+extended_default_ignore=[]
 
 [tool.flakehell.plugins]
 "*" = [

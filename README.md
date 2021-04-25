@@ -1,18 +1,21 @@
-# Mardown SBOM
+# Markdown SBOM
 
 [![ci](https://github.com/HaRo87/mdbom/workflows/ci/badge.svg)](https://github.com/HaRo87/mdbom/actions?query=workflow%3Aci)
 [![codecov](https://codecov.io/gh/HaRo87/mdbom/branch/main/graph/badge.svg?token=TGS5QA1M48)](https://codecov.io/gh/HaRo87/mdbom)
 [![documentation](https://img.shields.io/badge/docs-sphinx-blue.svg?style=flat)](https://HaRo87.github.io/mdbom/)
 [![pypi version](https://img.shields.io/pypi/v/mdbom.svg)](https://pypi.org/project/mdbom/)
 
-Transform SBOM to Markdown
+Transform Software Bill Of Materials (SBOM) to Markdown.
 
 ## Requirements
 
-Mardown SBOM requires Python 3.8 or above.
+MdBOM requires Python 3.8 or above.
 
 To install Python 3.8, I recommend using [Anaconda](https://www.anaconda.com/).
 
+## Documentation
+
+The [documentation](https://haro87.github.io/mdbom/) is hosted on GitHub Pages.
 
 ## Installation
 
