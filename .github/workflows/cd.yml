@@ -58,7 +58,7 @@ jobs:
         path_to_write_report: ./codecov_report.gz
 
     - name: Build docs
-      run: sphinx-build -b html docs/source docs/build
+      run: make check-docs
 
     - name: Deploy docs
       uses: peaceiris/actions-gh-pages@v3
