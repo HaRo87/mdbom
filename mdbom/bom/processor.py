@@ -44,7 +44,12 @@ class Processor(ABC):
         for component in content["components"]:
             licenses = []
             for component_license in component["licenses"]:
-                licenses.append(component_license["license"]["name"])
+                if "id" in component_license["license"]:
+                    licenses.append(component_license["license"]["id"])
+                elif "name" in component_license["license"]:
+                    licenses.append(component_license["license"]["name"])
+                else:
+                    licenses.append("unknown")
             packages.append(
                 Package(
                     component["name"],

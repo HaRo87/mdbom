@@ -17,7 +17,7 @@ class TestCLICommands(TestCase):
         self.assertEqual(0, result.exit_code)
 
     def test_generate_success(self):
-        file_name = self.input_dir / "bom.json"
+        file_name = self.input_dir / "bom-pypi.json"
         runner = CliRunner()
         with tempfile.TemporaryDirectory() as dir:
             out_name = os.path.join(dir, "3rdParty.md")
@@ -62,7 +62,7 @@ class TestCLICommands(TestCase):
             )
 
     def test_generate_fails_due_to_empty_output_file(self):
-        file_name = self.input_dir / "bom.json"
+        file_name = self.input_dir / "bom-pypi.json"
         runner = CliRunner()
         with tempfile.TemporaryDirectory() as dir:
             out_name = ""
@@ -81,7 +81,7 @@ class TestCLICommands(TestCase):
             )
 
     def test_generate_fails_due_to_empty_template_file(self):
-        file_name = self.input_dir / "bom.json"
+        file_name = self.input_dir / "bom-pypi.json"
         runner = CliRunner()
         with tempfile.TemporaryDirectory() as dir:
             out_name = os.path.join(dir, "3rdParty.md")

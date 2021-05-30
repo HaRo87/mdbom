@@ -55,13 +55,13 @@ class TestProcessor(TestCase):
 
     def test_load_bom_success(self):
         proc = DefaultProcessor(name="Default")
-        packages = proc._load_bom(filename=self.input_dir / "bom.json")
+        packages = proc._load_bom(filename=self.input_dir / "bom-pypi.json")
         self.assertEqual("argcomplete", packages["components"][0]["name"])
 
-    def test_get_packages_bom_success(self):
+    def test_get_packages_pypi_bom_success(self):
         proc = DefaultProcessor(name="Default")
         packages = proc.get_packages_from_bom(
-            filename=self.input_dir / "bom.json"
+            filename=self.input_dir / "bom-pypi.json"
         )
         self.assertEqual("argcomplete", packages[0].name)
         self.assertEqual("Apache Software License", packages[0].licenses)
@@ -71,10 +71,21 @@ class TestProcessor(TestCase):
         self.assertEqual("certifi", packages[1].name)
         self.assertEqual("click", packages[2].name)
 
+    def test_get_packages_npm_bom_success(self):
+        proc = DefaultProcessor(name="Default")
+        packages = proc.get_packages_from_bom(
+            filename=self.input_dir / "bom-npm.json"
+        )
+        self.assertEqual("eslint", packages[0].name)
+        self.assertEqual("MIT", packages[0].licenses)
+        self.assertEqual("library", packages[0].kind)
+        self.assertEqual("7.27.0", packages[0].version)
+        self.assertEqual(" ", packages[0].url)
+
     def test_construct_urls_success(self):
         proc = DefaultProcessor(name="Default")
         packages = proc.get_packages_from_bom(
-            filename=self.input_dir / "bom.json"
+            filename=self.input_dir / "bom-pypi.json"
         )
         packages = proc.construct_urls(packages=packages)
         self.assertEqual("argcomplete", packages[0].name)
