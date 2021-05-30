@@ -3,7 +3,7 @@ name: deploy-test-pypi
 on:
   push:
     branches:
-      - develop
+      - release/*
 
 defaults:
   run:
