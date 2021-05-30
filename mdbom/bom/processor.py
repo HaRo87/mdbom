@@ -8,6 +8,14 @@ from typing import Any, Dict, List
 
 from mdbom.bom.bom import Package, ProcessingError
 
+COMPONENTS_ID = "components"
+LICENSE_ID = "license"
+LICENSES_ID = "licenses"
+NAME_ID = "name"
+ID_ID = "id"
+TYPE_ID = "type"
+VERSION_ID = "version"
+
 
 class Processor(ABC):
     """A processor for handling bill of materials."""
@@ -41,20 +49,20 @@ class Processor(ABC):
         """
         content = self._load_bom(filename=filename)
         packages = []
-        for component in content["components"]:
+        for component in content[COMPONENTS_ID]:
             licenses = []
-            for component_license in component["licenses"]:
-                if "id" in component_license["license"]:
-                    licenses.append(component_license["license"]["id"])
-                elif "name" in component_license["license"]:
-                    licenses.append(component_license["license"]["name"])
+            for component_license in component[LICENSES_ID]:
+                if component_license[LICENSE_ID].get(ID_ID) is not None:
+                    licenses.append(component_license[LICENSE_ID][ID_ID])
+                elif component_license[LICENSE_ID].get(NAME_ID) is not None:
+                    licenses.append(component_license[LICENSE_ID][NAME_ID])
                 else:
                     licenses.append("unknown")
             packages.append(
                 Package(
-                    component["name"],
-                    component["version"],
-                    component["type"],
+                    component[NAME_ID],
+                    component[VERSION_ID],
+                    component[TYPE_ID],
                     ",".join(licenses),
                     " ",
                 ),
