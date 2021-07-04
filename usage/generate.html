@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>How to generate a markdown file &mdash; Markdown Software Bill Of Materials 0.1.0 documentation</title>
+  <title>How to generate a markdown file &mdash; Markdown Software Bill Of Materials 0.2.0 documentation</title>
   
 
   
@@ -162,11 +162,16 @@ You can have a look at the <a class="reference external" href="https://github.co
 provided by the MdBOM project.</p>
 <p>Once you have a template and a BOM you should be able to generate
 a markdown file via:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mdb</span> <span class="n">generate</span> <span class="o">--</span><span class="nb">input</span> <span class="n">bom</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">output</span> <span class="mi">3</span><span class="n">rd</span><span class="o">-</span><span class="n">party</span><span class="o">.</span><span class="n">md</span> <span class="o">--</span><span class="n">template</span> <span class="n">template</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">jinja</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mdb</span> <span class="n">generate</span> <span class="o">--</span><span class="nb">input</span> <span class="n">bom</span><span class="o">.</span><span class="n">json</span> <span class="o">--</span><span class="n">output</span> <span class="mi">3</span><span class="n">rd</span><span class="o">-</span><span class="n">party</span><span class="o">.</span><span class="n">md</span> <span class="o">--</span><span class="n">template</span> <span class="n">template</span><span class="o">.</span><span class="n">md</span><span class="o">.</span><span class="n">jinja</span> <span class="o">--</span><span class="nb">type</span> <span class="n">pypi</span>
 </pre></div>
 </div>
 <p>This will take the “bom.json” file as input, collect all relevant information and
 use the “template.md.jinja” template to generate the “3rd-party.md” file.</p>
+<p>Currently, MdBOM does support the following two BOM types via the “–type” option:</p>
+<ul class="simple">
+<li><p>pypi</p></li>
+<li><p>npm</p></li>
+</ul>
 </div>
 
 
