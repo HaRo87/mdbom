@@ -3,6 +3,9 @@ import pathlib
 import tempfile
 from click.testing import CliRunner
 from unittest import TestCase
+from unittest.mock import patch
+from mdbom.bom.processor import ProcessingError, Processor
+from mdbom.bom.pypi import PyPiProcessor
 from mdbom.mdbom import cli, generate
 
 
@@ -146,3 +149,71 @@ class TestCLICommands(TestCase):
                 result.output,
                 "Error: Invalid processor provided, check --help for available ones\n",
             )
+
+    def test_generate_fails_due_to_pypi_processor_initialization_not_working(
+        self,
+    ):
+        def __init__(self, processor_name):
+            raise ProcessingError("Something went wrong")
+
+        with patch.object(Processor, "__init__", __init__):
+            runner = CliRunner()
+            result = runner.invoke(
+                generate,
+                [
+                    "--type=pypi",
+                ],
+            )
+            self.assertEqual(1, result.exit_code)
+            self.assertEqual(
+                result.output,
+                "Error: Something went wrong\n",
+            )
+
+    def test_generate_fails_due_to_npm_processor_initialization_not_working(
+        self,
+    ):
+        def __init__(self, processor_name):
+            raise ProcessingError("Something went wrong")
+
+        with patch.object(Processor, "__init__", __init__):
+            runner = CliRunner()
+            result = runner.invoke(
+                generate,
+                [
+                    "--type=npm",
+                ],
+            )
+            self.assertEqual(1, result.exit_code)
+            self.assertEqual(
+                result.output,
+                "Error: Something went wrong\n",
+            )
+
+    def test_generate_fails_due_to_pypi_processing__not_working(
+        self,
+    ):
+        file_name = self.input_dir / "bom-pypi.json"
+
+        def construct_urls(self, packages):
+            raise ProcessingError("Something went wrong")
+
+        with patch.object(PyPiProcessor, "construct_urls", construct_urls):
+            with tempfile.TemporaryDirectory() as dir:
+                out_name = os.path.join(dir, "3rdParty.md")
+                template_name = self.examples_dir / "template.md.jinja"
+                runner = CliRunner()
+                result = runner.invoke(
+                    generate,
+                    [
+                        f"--input={file_name}",
+                        f"--output={out_name}",
+                        f"--template={template_name}",
+                        "--type=pypi",
+                    ],
+                )
+                self.assertEqual(1, result.exit_code)
+                self.assertEqual(
+                    result.output,
+                    "Error: Something went wrong\n",
+                )
