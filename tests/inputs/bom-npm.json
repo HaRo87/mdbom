@@ -1,0 +1,36 @@
+{
+    "bomFormat": "CycloneDX",
+    "components": [
+        {
+            "type": "library",
+            "bom-ref": "pkg:npm/eslint@7.27.0",
+            "name": "eslint",
+            "version": "7.27.0",
+            "description": "An AST-based pattern checker for JavaScript.",
+            "licenses": [
+                {
+                    "license": {
+                        "id": "MIT"
+                    }
+                }
+            ],
+            "purl": "pkg:npm/eslint@7.27.0",
+            "externalReferences": [
+                {
+                    "type": "website",
+                    "url": "https://eslint.org"
+                },
+                {
+                    "type": "issue-tracker",
+                    "url": "https://github.com/eslint/eslint/issues/"
+                },
+                {
+                    "type": "vcs",
+                    "url": "git+https://github.com/eslint/eslint.git"
+                }
+            ]
+        }
+    ],
+    "specVersion": "1.2",
+    "version": 1
+}

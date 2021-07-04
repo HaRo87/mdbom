@@ -10,7 +10,7 @@ class TestProcessor(TestCase):
     def test_construct_pypi_urls_success(self):
         proc = PyPiProcessor()
         packages = proc.get_packages_from_bom(
-            filename=self.input_dir / "bom.json"
+            filename=self.input_dir / "bom-pypi.json"
         )
         packages = proc.construct_urls(packages=packages)
         self.assertEqual("argcomplete", packages[0].name)
