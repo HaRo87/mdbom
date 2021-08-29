@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: apt-get update -yqq && apt-get install -yqq curl
+      run: sudo apt-get update -yqq && sudo apt-get install -yqq curl
 
     - name: Install Task
       run: curl -sSfL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
