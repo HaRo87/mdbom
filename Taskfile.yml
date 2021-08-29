@@ -6,7 +6,7 @@ env:
 tasks:
   setup:
     cmds:
-      - sh scripts/setup.sh
+      - bash scripts/setup.sh
   check-code-quality:
     cmds:
       - $RUN_CMD flakehell lint ./mdbom/
