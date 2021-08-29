@@ -34,7 +34,10 @@ You now have the dependencies installed.
 
 You can run the application with `poetry run mdb [ARGS...]`.
 
-Run `task list` to see all the available actions!
+Run `task --list` to see all the available actions!
+
+If you want to know more about a specific task then run
+`task <name> --summary` to get a detailed description. 
 
 ## Development
 
@@ -46,6 +49,7 @@ As usual:
 If you updated the documentation or the project dependencies:
 
 1. run `task check-docs`
+2. run `task check-code`
 
 **Before committing:**
 
