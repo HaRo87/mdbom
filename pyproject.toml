@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "mdbom"
-version = "0.2.0"
+version = "0.2.1"
 description = "Transform SBOM to Markdown"
 authors = ["Robert Hansel <code@fam-hansel.de>"]
 license = "MIT License"
@@ -70,8 +70,6 @@ extended_default_ignore=[]
     "-S101",  # use of assert
     "-C0301",  # line too long
     "-WPS305",  # f-strings
-    "-WPS420", # pass keyword
-    "-W0107", # pass keyword 
     "-WPS110", # wrong var name
     "-WPS323", # string formatting
     "-WPS604", # pass in class

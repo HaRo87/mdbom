@@ -76,7 +76,6 @@ class Processor(ABC):
         Args:
             packages: The list of packages to use.
         """
-        pass
 
     def _load_bom(self, filename: str = "") -> Dict[Any, Any]:
         if filename:

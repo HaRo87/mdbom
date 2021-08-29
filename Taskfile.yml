@@ -1,0 +1,133 @@
+version: '3'
+
+env:
+    RUN_CMD: poetry run
+
+tasks:
+  setup:
+    desc: Setup the project
+    summary: |
+      Runs the "setup.sh" script located in the
+      "scripts" dir in order to make sure that the
+      whole project setup is working for you.
+    cmds:
+      - bash scripts/setup.sh
+  check-code-quality:
+    desc: Code linting
+    summary: |
+      Uses flakehell to lint the whole project to
+      ensure that specified code quality is adhered to.
+    cmds:
+      - $RUN_CMD flakehell lint ./mdbom/
+  check-code-deps:
+    desc: Check code dependencies
+    summary: |
+      Use safety to check project dependencies for known
+      security vulnerabilities.
+    cmds:
+      - poetry export -f requirements.txt --without-hashes | poetry run safety check --stdin --full-report
+  check-code-types:
+    desc: Check correct typing
+    summary: |
+      Use mypy to ensure that correct typing is used throughout
+      the the whole project.
+    cmds:
+      - $RUN_CMD mypy --config-file config/mypy.ini ./mdbom/ 
+  check-code:
+    desc: Run all code quality checks
+    summary: |
+      Runs:
+        - check-code-quality
+        - check-code-deps
+        - check-code-types
+    deps: [check-code-quality, check-code-deps, check-code-types]
+  check-docs:
+    desc: Build the documentation
+    summary: |
+      Using Sphinx to build the documnentation to check if
+      it works.
+    cmds:
+      - $RUN_CMD sphinx-build -b html docs/source docs/build
+  check:
+    desc: Run all checks
+    summary: |
+      Run all code and documentation checks.
+    deps: [check-code, check-docs]
+  test:
+    desc: Run the tests
+    summary: |
+        Use pytest to run all tests.
+    cmds:
+      - $RUN_CMD pytest -c config/pytest.ini tests
+  coverage:
+    desc: Create coverage report
+    summary: |
+      Use coverage to create coverage report(s) which are
+      uploaded to codecov.
+    cmds:
+      - $RUN_CMD coverage report --rcfile=.coveragerc
+      - $RUN_CMD coverage xml --rcfile=.coveragerc
+  format:
+    desc: Format the code
+    summary: |
+      Use autoflake to format all code files.
+    cmds:
+      - $RUN_CMD autoflake -ir --exclude tests/fixtures --remove-all-unused-imports ./mdbom/
+  build:
+    desc: Build the code
+    summary: |
+      Use poetry to build the project.
+    cmds:
+      - poetry build
+  clean-coverage:
+    desc: Clean the coverage dir
+    summary: |
+      Remove the ".coverage" directory.
+    dir: ./
+    cmds:
+      - rm -rf .coverage
+  clean-types:
+    desc: Clean the mypy dir
+    summary: |
+      Remove the ".mypy_cache" directory.
+    dir: ./
+    cmds:
+      - rm -rf .mypy_cache
+  clean-tests:
+    desc: Clean the pytest dir
+    summary: |
+      Remove the ".pytest_cache" directory.
+    dir: ./
+    cmds:
+      - rm -rf .pytest_cache
+  clean-build:
+    desc: Clean the build dir(s)
+    summary: |
+      Remove the directories:
+        - build
+        - dist
+        - wheel
+        - pip-wheel-metadata
+      which are relevant for the build.
+    dir: ./
+    cmds:
+      - rm -rf build
+      - rm -rf dist
+      - rm -rf wheel
+      - rm -rf pip-wheel-metadata
+  clean-docs:
+    desc: Clean the documentation dir
+    summary: |
+      Remove the "site" directory.
+    dir: ./
+    cmds:
+      - rm -rf site
+  clean-pycache:
+    desc: Clean the pycache
+    dir: ./
+    cmds:
+      - find . -type d -name __pycache__ | xargs rm -rf
+  clean:
+    desc: Clean everything
+    deps: [clean-coverage, clean-types, clean-tests,  clean-build, clean-docs, clean-pycache]
+  

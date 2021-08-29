@@ -10,8 +10,6 @@ from mdbom.bom.bom import Package
 class GeneratingError(RuntimeError):
     """Generating error for raising generation specific error."""
 
-    pass
-
 
 def generate_markdown(template, file_name: str, packages: List[Package]):
     """Generate markdown file from provided template.

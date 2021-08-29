@@ -19,6 +19,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Install Dependencies
+      run: sudo apt-get update -yqq && sudo apt-get install -yqq curl
+
+    - name: Install Task
+      run: curl -sSfL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
+
+    - name: Set PATH
+      run: export PATH=/usr/local/bin:$PATH
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -34,18 +43,18 @@ jobs:
       uses: Gr1N/setup-poetry@v4
 
     - name: Setup project
-      run: poetry install
-    
-    - name: Build
-      run: poetry build
-
-    - name: Publish Package
-      run: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
+      run: task setup
     
     - name: Test and Coverage
       run: |
-        make test
-        make coverage
+        task test
+        task coverage
+
+    - name: Build
+      run: task build
+
+    - name: Publish Package
+      run: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
@@ -58,7 +67,7 @@ jobs:
         path_to_write_report: ./codecov_report.gz
 
     - name: Build docs
-      run: make check-docs
+      run: task check-docs
 
     - name: Deploy docs
       uses: peaceiris/actions-gh-pages@v3

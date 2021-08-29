@@ -19,6 +19,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Install Dependencies
+      run: sudo apt-get update -yqq && sudo apt-get install -yqq curl
+
+    - name: Install Task
+      run: curl -sSfL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
+
+    - name: Set PATH
+      run: export PATH=/usr/local/bin:$PATH
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -34,15 +43,15 @@ jobs:
       uses: Gr1N/setup-poetry@v4
 
     - name: Setup project
-      run: poetry install
+      run: task setup
     
     - name: Test and Coverage
       run: |
-        make test
-        make coverage
+        task test
+        task coverage
 
     - name: Build
-      run: poetry build
+      run: task build
 
     - name: Set test-pypi repo
       run: poetry config repositories.testpypi https://test.pypi.org/legacy/

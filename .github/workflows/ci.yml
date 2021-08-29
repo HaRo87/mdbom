@@ -26,6 +26,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Install Dependencies
+      run: sudo apt-get update -yqq && sudo apt-get install -yqq curl
+
+    - name: Install Task
+      run: curl -sSfL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
+
+    - name: Set PATH
+      run: export PATH=/usr/local/bin:$PATH
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -41,25 +50,25 @@ jobs:
       uses: Gr1N/setup-poetry@v4
 
     - name: Setup project
-      run: make setup
+      run: task setup
 
     - name: Test
-      run: make test
+      run: task test
 
     - name: Coverage
-      run: make coverage
+      run: task coverage
 
     - name: Check if the documentation builds correctly
-      run: make check-docs
+      run: task check-docs
 
     - name: Check the code quality
-      run: make check-code-quality
+      run: task check-code-quality
 
     - name: Check if the code is correctly typed
-      run: make check-types
+      run: task check-code-types
 
     - name: Check for vulnerabilities in dependencies
-      run: make check-dependencies
+      run: task check-code-deps
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1

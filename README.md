@@ -13,6 +13,8 @@ MdBOM requires Python 3.8 or above.
 
 To install Python 3.8, I recommend using [Anaconda](https://www.anaconda.com/).
 
+Furthermore, you need [Task](https://taskfile.dev/#/installation) to run all quality checks.
+
 ## Documentation
 
 The [documentation](https://haro87.github.io/mdbom/) is hosted on GitHub Pages.
@@ -36,6 +38,6 @@ pipx install --python python3.8 mdbom
 Setup your development environment:
 
 ```bash
-make setup
+task setup
 ```
 
