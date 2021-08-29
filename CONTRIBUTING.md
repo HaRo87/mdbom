@@ -11,7 +11,7 @@ Fork and clone the repository, then:
 
 ```bash
 cd mdbom
-make setup
+task setup
 ```
 
 !!! note
@@ -34,23 +34,7 @@ You now have the dependencies installed.
 
 You can run the application with `poetry run mdb [ARGS...]`.
 
-Run `make help` to see all the available actions!
-
-## Tasks
-
-This project uses [duty](https://github.com/pawamoy/duty) to run tasks.
-A Makefile is also provided. The Makefile will try to run certain tasks
-on multiple Python versions. If for some reason you don't want to run the task
-on multiple Python versions, you can do one of the following:
-
-1. `export PYTHON_VERSIONS= `: this will run the task
-   with only the current Python version
-2. run the task directly with `poetry run duty TASK`,
-   or `duty TASK` if the environment was already activated
-   through `poetry shell`
-
-The Makefile detects if the Poetry environment is activated,
-so `make` will work the same with the virtualenv activated or not.
+Run `task list` to see all the available actions!
 
 ## Development
 
@@ -61,15 +45,13 @@ As usual:
 
 If you updated the documentation or the project dependencies:
 
-1. run `make docs-regen`
-1. run `make docs-serve`,
-   go to http://localhost:8000 and check that everything looks good
+1. run `task check-docs`
 
 **Before committing:**
 
-1. run `make format` to auto-format the code
-1. run `make check` to check everything (fix any warning)
-1. run `make test` to run the tests (fix any issue)
+1. run `task format` to auto-format the code
+1. run `task check` to check everything (fix any warning)
+1. run `task test` to run the tests (fix any issue)
 1. follow our [commit message convention](#commit-message-convention)
 
 If you are unsure about how to fix or ignore a warning,

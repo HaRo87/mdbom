@@ -1,0 +1,68 @@
+version: '3'
+
+env:
+    RUN_CMD: poetry run
+
+tasks:
+  setup:
+    cmds:
+      - sh scripts/setup.sh
+  check-code-quality:
+    cmds:
+      - $RUN_CMD flakehell lint ./mdbom/
+  check-code-deps:
+    cmds:
+      - poetry export -f requirements.txt --without-hashes | poetry run safety check --stdin --full-report
+  check-code-types:
+    cmds:
+      - $RUN_CMD mypy --config-file config/mypy.ini ./mdbom/ 
+  check-code:
+    deps: [check-code-quality, check-code-deps, check-code-types]
+  check-docs:
+    cmds:
+      - $RUN_CMD sphinx-build -b html docs/source docs/build
+  check:
+    deps: [check-code, check-docs]
+  test:
+    cmds:
+      - $RUN_CMD pytest -c config/pytest.ini tests
+  coverage:
+    cmds:
+      - $RUN_CMD coverage report --rcfile=.coveragerc
+      - $RUN_CMD coverage xml --rcfile=.coveragerc
+  format:
+    cmds:
+      - $RUN_CMD autoflake -ir --exclude tests/fixtures --remove-all-unused-imports ./mdbom/
+  build:
+    cmds:
+      - poetry build
+  clean-coverage:
+    dir: ./
+    cmds:
+      - rm -rf .coverage
+  clean-types:
+    dir: ./
+    cmds:
+      - rm -rf .mypy_cache
+  clean-tests:
+    dir: ./
+    cmds:
+      - rm -rf .pytest_cache
+  clean-build:
+    dir: ./
+    cmds:
+      - rm -rf build
+      - rm -rf dist
+      - rm -rf wheel
+      - rm -rf pip-wheel-metadata
+  clean-docs:
+    dir: ./
+    cmds:
+      - rm -rf site
+  clean-pycache:
+    dir: ./
+    cmds:
+      - find . -type d -name __pycache__ | xargs rm -rf
+  clean:
+    deps: [clean-coverage, clean-types, clean-tests,  clean-build, clean-docs, clean-pycache]
+  

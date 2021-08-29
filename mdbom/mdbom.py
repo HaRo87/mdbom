@@ -30,7 +30,6 @@ NPM_PROCESSOR_NAME = "npm"
 @click.group()
 def cli():
     """Run the main entry point for MdBOM."""
-    pass
 
 
 @click.command()

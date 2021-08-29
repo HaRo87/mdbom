@@ -6,8 +6,6 @@ from typing import NamedTuple
 class ProcessingError(RuntimeError):
     """Processing error for raising processing specific errors."""
 
-    pass
-
 
 class Package(NamedTuple):
     """A representation of a package."""
