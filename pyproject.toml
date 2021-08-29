@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "mdbom"
-version = "0.2.0"
+version = "0.2.1"
 description = "Transform SBOM to Markdown"
 authors = ["Robert Hansel <code@fam-hansel.de>"]
 license = "MIT License"
