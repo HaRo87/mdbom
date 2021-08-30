@@ -40,7 +40,7 @@ jobs:
         key: release-venv-cache
 
     - name: Setup Poetry
-      uses: Gr1N/setup-poetry@v4
+      uses: Gr1N/setup-poetry@v7
 
     - name: Setup project
       run: task setup
