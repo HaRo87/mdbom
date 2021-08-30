@@ -59,7 +59,7 @@ jobs:
       run: task coverage
 
     - name: Check if the documentation builds correctly
-      run: task check-docs
+      run: task build-docs
 
     - name: Check the code quality
       run: task check-code-quality

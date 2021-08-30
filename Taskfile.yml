@@ -41,18 +41,11 @@ tasks:
         - check-code-deps
         - check-code-types
     deps: [check-code-quality, check-code-deps, check-code-types]
-  check-docs:
-    desc: Build the documentation
-    summary: |
-      Using Sphinx to build the documnentation to check if
-      it works.
-    cmds:
-      - $RUN_CMD sphinx-build -b html docs/source docs/build
   check:
     desc: Run all checks
     summary: |
       Run all code and documentation checks.
-    deps: [check-code, check-docs]
+    deps: [check-code, build-docs]
   test:
     desc: Run the tests
     summary: |
