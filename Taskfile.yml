@@ -41,18 +41,11 @@ tasks:
         - check-code-deps
         - check-code-types
     deps: [check-code-quality, check-code-deps, check-code-types]
-  check-docs:
-    desc: Build the documentation
-    summary: |
-      Using Sphinx to build the documnentation to check if
-      it works.
-    cmds:
-      - $RUN_CMD sphinx-build -b html docs/source docs/build
   check:
     desc: Run all checks
     summary: |
       Run all code and documentation checks.
-    deps: [check-code, check-docs]
+    deps: [check-code, build-docs]
   test:
     desc: Run the tests
     summary: |
@@ -130,4 +123,35 @@ tasks:
   clean:
     desc: Clean everything
     deps: [clean-coverage, clean-types, clean-tests,  clean-build, clean-docs, clean-pycache]
+  changelog:
+    desc: Generate the Changelog
+    summary: |
+      Using git-changelog to generate the changelog from
+      information provided by the git log.
+    cmds:
+      - $RUN_CMD git-changelog . -s angular -t keepachangelog -o CHANGELOG.md
+  build-docs:
+    desc: Build the MkDocs documentation
+    summary: |
+      Using MkDocs to build the documentation.
+    deps: [changelog]
+    cmds:
+      - $RUN_CMD mkdocs build
+  deploy-docs:
+    desc: Deploy the documentation to GitHub Pages
+    summary: |
+      Using mike to deploy a specific version.
+      The version has to be provided as an argument.
+    deps: [build-docs]
+    cmds:
+      - $RUN_CMD mike deploy --push --update-aliases --rebase {{ .CLI_ARGS }}
+  deploy-docs-alias:
+    desc: Updating the latest version of the documentation on GitHub Pages
+    summary: |
+      Using mike to update a specific version.
+      The version has to be provided as an argument.
+    deps: [build-docs]
+    cmds:
+      - $RUN_CMD mike set-default --push --rebase {{ .CLI_ARGS }}
+  
   

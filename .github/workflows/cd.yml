@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install Dependencies
+      run: sudo apt-get update -yqq && sudo apt-get install -yqq curl git
+    
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: sudo apt-get update -yqq && sudo apt-get install -yqq curl
 
     - name: Install Task
       run: curl -sSfL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
@@ -40,7 +40,7 @@ jobs:
         key: release-venv-cache
 
     - name: Setup Poetry
-      uses: Gr1N/setup-poetry@v4
+      uses: Gr1N/setup-poetry@v7
 
     - name: Setup project
       run: task setup
@@ -66,12 +66,10 @@ jobs:
         fail_ci_if_error: true
         path_to_write_report: ./codecov_report.gz
 
-    - name: Build docs
-      run: task check-docs
-
     - name: Deploy docs
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/build
+      env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        GIT_TAG=$(git describe --abbrev=0 --tags) && task deploy-docs -- $GIT_TAG main
+        task deploy-docs-alias -- main
     
