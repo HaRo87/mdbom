@@ -129,7 +129,7 @@ tasks:
       Using git-changelog to generate the changelog from
       information provided by the git log.
     cmds:
-      - git-changelog . -s angular -t keepachangelog -o CHANGELOG.md
+      - $RUN_CMD git-changelog . -s angular -t keepachangelog -o CHANGELOG.md
   build-docs:
     desc: Build the MkDocs documentation
     summary: |
