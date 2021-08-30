@@ -45,8 +45,9 @@ pytest-xdist = "^2.2.0"
 toml = "^0.10.2"
 wemake-python-styleguide = "^0.14.1"
 safety = "^1.10.3"
-Sphinx = "^3.5.1"
-sphinx-rtd-theme = "^0.5.1"
+mkdocs = "^1.2.2"
+mkdocs-material = "^7.2.5"
+mike = "^1.0.1"
 
 [tool.poetry.scripts]
 mdb = "mdbom.mdbom:cli"

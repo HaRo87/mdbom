@@ -1,0 +1,41 @@
+site_name: MdBOM Documentation
+site_description: Markdown Software Bill Of Materials
+site_url: https://haro87.github.io/mdbom/
+repo_url: https://github.com/HaRo87/mdbom
+repo_name: HaRo87/mdbom
+site_author: Robert Hansel
+copyright: Robert Hansel 2021
+
+plugins:
+  - search
+  - mike:
+      version_selector: true
+
+nav:
+  - Home:
+    - Overview: index.md
+    - Installation: install.md
+    - Generation:
+      - Software Bill Of Materials: bom.md
+      - Markdown Report: markdown.md
+    - License: license.md
+    - Changelog: changelog.md
+  - Contributing: contributing.md
+  - Author's Website: https://github.com/HaRo87
+
+theme:
+  name: material
+  font: false
+  palette:
+    scheme: default
+    primary: blue
+
+markdown_extensions:
+  - pymdownx.snippets:
+      check_paths: true
+  - toc:
+      permalink: true
+
+extra:
+  version:
+    provider: mike
