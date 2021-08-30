@@ -22,6 +22,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Git Setup
+      run: |
+        git config user.email "$GITHUB_ACTOR@fam-hansel.de"
+        git config user.name "$GITHUB_ACTOR"
+
     - name: Install Task
       run: curl -sSfL https://taskfile.dev/install.sh | sh -s -- -b /usr/local/bin
 
