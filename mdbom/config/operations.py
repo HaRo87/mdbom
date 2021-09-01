@@ -94,7 +94,7 @@ def create_config(
 def _validate_config(config: types.Config) -> NoReturn:  # type: ignore
     if not config.source.bom_file:
         raise types.ConfigError("Invalid BOM file")
-    if config.source.template_file:
+    if not config.source.template_file:
         raise types.ConfigError("Invalid template file")
     if not config.target.markdown_file:
         raise types.ConfigError("Invalid markdown file")
