@@ -76,4 +76,6 @@ extended_default_ignore=[]
     "-WPS604", # pass in class
     "-W503", # line break before binary operator
     "-D401", # imperative mood
+    "-WPS420", # pass
+    "-WPS513", # implicit elif
 ]
