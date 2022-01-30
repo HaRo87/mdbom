@@ -4,7 +4,7 @@ This page describes how to install MdBOM.
 
 MdBOM requires Python 3.8 or above.
 
-To install Python 3.8, I recommend using [Anaconda](https://www.anaconda.com).
+To install Python 3.8, you can use [Anaconda](https://www.anaconda.com).
 
 First, you should create a new environment
 
