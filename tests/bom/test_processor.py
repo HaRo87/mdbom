@@ -80,6 +80,27 @@ class TestProcessor(TestCase):
         self.assertEqual("0.1.1", packages[0].version)
         self.assertEqual(" ", packages[0].url)
 
+    @patch("mdbom.bom.processor.Processor._load_bom")
+    def test_get_packages_bom_with_unknown_licenses(self, load_patch):
+        load_patch.return_value = {
+            "components": [
+                {
+                    "name": "Test",
+                    "version": "0.1.1",
+                    "type": "test",
+                }
+            ]
+        }
+        proc = DefaultProcessor(name="Default")
+        packages = proc.get_packages_from_bom(
+            filename=self.input_dir / "bom-pypi.json"
+        )
+        self.assertEqual("Test", packages[0].name)
+        self.assertEqual("unknown", packages[0].licenses)
+        self.assertEqual("test", packages[0].kind)
+        self.assertEqual("0.1.1", packages[0].version)
+        self.assertEqual(" ", packages[0].url)
+
     def test_get_packages_pypi_bom_success(self):
         proc = DefaultProcessor(name="Default")
         packages = proc.get_packages_from_bom(
