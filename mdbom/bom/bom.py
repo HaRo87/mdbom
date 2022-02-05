@@ -14,4 +14,5 @@ class Package(NamedTuple):
     version: str
     kind: str
     licenses: str
+    purl: str
     url: str

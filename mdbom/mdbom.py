@@ -10,8 +10,6 @@ import logging
 import click
 
 from mdbom.bom.bom import ProcessingError
-from mdbom.bom.npm import NpmProcessor
-from mdbom.bom.pypi import PyPiProcessor
 from mdbom.md.md import GeneratingError, generate_markdown
 
 log_handler = logging.StreamHandler()
@@ -22,9 +20,6 @@ log_handler.setFormatter(log_formatter)
 logging.basicConfig(level=logging.NOTSET, handlers=[log_handler])
 
 logger = logging.getLogger("MdBOM")
-
-PYPI_PROCESSOR_NAME = "pypi"
-NPM_PROCESSOR_NAME = "npm"
 
 
 @click.group()
@@ -58,60 +53,26 @@ def info():
     default="template.md.jinja",
     help="The Jinja2 template file",
 )
-@click.option(
-    "--type",
-    "proc_type",
-    default="pypi",
-    help="The processors used for generation (pypi/npm)",
-)
-def generate(input_file, output_file, template_file, proc_type):
+def generate(input_file, output_file, template_file):
     """Processes a given BOM file and generates the markdown file.
 
     Args:
         input_file: The input_file holding the BOM info.
         output_file: The output_file where the result should be stored.
         template_file: The template_file to be used for markdown generation.
-        proc_type: The processor type which is used to process the BOM file.
 
     Raises:
         ClickException: In case invalid input is provided.
     """
-    processors = {}
-    try:
-        processors[PYPI_PROCESSOR_NAME] = PyPiProcessor()
-    except ProcessingError as pie:
-        raise click.ClickException(pie)
-
-    try:
-        processors[NPM_PROCESSOR_NAME] = NpmProcessor()
-    except ProcessingError as npe:
-        raise click.ClickException(npe)
-
-    if proc_type not in processors:
-        raise click.ClickException(
-            "Invalid processor provided, check --help for available ones",
-        )
-
-    try:
-        packages = processors[proc_type].get_packages_from_bom(
-            filename=input_file,
-        )
-    except ProcessingError as pge:
-        raise click.ClickException(pge)
-
-    try:
-        packages = processors[proc_type].construct_urls(packages=packages)
-    except ProcessingError as pce:
-        raise click.ClickException(pce)
-
-    try:
-        generate_markdown(
-            template=template_file,
-            file_name=output_file,
-            packages=packages,
-        )
-    except GeneratingError as ge:
-        raise click.ClickException(ge)
+    
+    # try:
+    #     generate_markdown(
+    #         template=template_file,
+    #         file_name=output_file,
+    #         packages=packages,
+    #     )
+    # except GeneratingError as ge:
+    #     raise click.ClickException(ge)
 
     click.echo("Generated markdown file:")
     click.echo(output_file)
