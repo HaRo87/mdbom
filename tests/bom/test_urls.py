@@ -1,6 +1,8 @@
 from testfixtures import LogCapture
 from unittest import TestCase
-from mdbom.bom.urls import _empty_url_builder, _get_package_and_version, _npm_url_builder, _pypi_url_builder
+from mdbom.bom.urls import _get_package_and_version, get_url
+
+
 class TestURLs(TestCase):
 
     invalid_purl = ""
@@ -22,29 +24,23 @@ class TestURLs(TestCase):
         package, version = _get_package_and_version("pkg:pypi/@1.2.3")
         self.assertEqual("", package)
         self.assertEqual("1.2.3", version)
-    
-    def test_empty_url_builder_returns_empty_url(self):
-        self.assertEqual("", _empty_url_builder(self.invalid_purl))
 
-    def test_pypi_url_builder_fails_due_to_invalid_purl(self):
+    def test_get_url_fails_due_to_invalid_purl(self):
         with LogCapture() as log:
-            res = _pypi_url_builder(self.invalid_purl)
+            res = get_url(self.invalid_purl)
             self.assertEqual("", res)
-            log.check(("MdBOM", "WARNING", "No valid pypi purl provided, returning empty URL"))
-    
-    def test_pypi_url_builder_success(self):
-        res = _pypi_url_builder(self.valid_pypi_purl)
+            log.check(
+                (
+                    "MdBOM",
+                    "WARNING",
+                    "No valid purl provided, returning empty URL",
+                )
+            )
+
+    def test_get_url_for_pypi_success(self):
+        res = get_url(self.valid_pypi_purl)
         self.assertEqual("https://pypi.org/project/django/1.11.1", res)
 
-    def test_npm_url_builder_fails_due_to_invalid_purl(self):
-        with LogCapture() as log:
-            res = _npm_url_builder(self.invalid_purl)
-            self.assertEqual("", res)
-            log.check(("MdBOM", "WARNING", "No valid npm purl provided, returning empty URL"))
-    
-    def test_npm_url_builder_success(self):
-        res = _npm_url_builder(self.valid_npm_purl)
-        self.assertEqual("https://www.npmjs.com/package/foobar/12.3.1", res)
-
-    
-
+    def test_get_url_for_npm_success(self):
+        res = get_url(self.valid_npm_purl)
+        self.assertEqual("https://www.npmjs.com/package/foobar/v/12.3.1", res)

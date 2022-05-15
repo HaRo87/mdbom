@@ -44,7 +44,7 @@ class TestProcessor(TestCase):
         self.assertEqual("unknown", packages[0].licenses)
         self.assertEqual("test", packages[0].kind)
         self.assertEqual("0.1.1", packages[0].version)
-        self.assertEqual(" ", packages[0].url)
+        self.assertEqual("", packages[0].url)
 
     @patch("mdbom.bom.processor._load_bom")
     def test_get_packages_bom_with_unknown_licenses(self, load_patch):
@@ -64,7 +64,7 @@ class TestProcessor(TestCase):
         self.assertEqual("unknown", packages[0].licenses)
         self.assertEqual("test", packages[0].kind)
         self.assertEqual("0.1.1", packages[0].version)
-        self.assertEqual(" ", packages[0].url)
+        self.assertEqual("", packages[0].url)
 
     def test_get_packages_pypi_bom_success(self):
         packages = get_packages_from_bom(
@@ -74,7 +74,10 @@ class TestProcessor(TestCase):
         self.assertEqual("Apache Software License", packages[0].licenses)
         self.assertEqual("library", packages[0].kind)
         self.assertEqual("1.12.2", packages[0].version)
-        self.assertEqual(" ", packages[0].url)
+        self.assertEqual("pkg:pypi/argcomplete@1.12.2", packages[0].purl)
+        self.assertEqual(
+            "https://pypi.org/project/argcomplete/1.12.2", packages[0].url
+        )
         self.assertEqual("certifi", packages[1].name)
         self.assertEqual("click", packages[2].name)
 
@@ -86,4 +89,7 @@ class TestProcessor(TestCase):
         self.assertEqual("MIT", packages[0].licenses)
         self.assertEqual("library", packages[0].kind)
         self.assertEqual("7.27.0", packages[0].version)
-        self.assertEqual(" ", packages[0].url)
+        self.assertEqual("pkg:npm/eslint@7.27.0", packages[0].purl)
+        self.assertEqual(
+            "https://www.npmjs.com/package/eslint/v/7.27.0", packages[0].url
+        )

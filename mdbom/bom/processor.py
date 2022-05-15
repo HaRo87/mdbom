@@ -5,6 +5,7 @@ import os
 from typing import Any, Dict, List
 
 from mdbom.bom.bom import Package, ProcessingError
+from mdbom.bom.urls import get_url
 
 COMPONENTS_ID = "components"
 LICENSE_ID = "license"
@@ -14,6 +15,7 @@ ID_ID = "id"
 TYPE_ID = "type"
 VERSION_ID = "version"
 PURL_ID = "purl"
+
 
 def get_packages_from_bom(filename: str = "") -> List[Package]:
     """Get a list of packages from the BOM.
@@ -34,10 +36,11 @@ def get_packages_from_bom(filename: str = "") -> List[Package]:
                 component[TYPE_ID],
                 ",".join(_extract_licenses(component)),
                 _extract_purl(component),
-                " ",
+                get_url(_extract_purl(component)),
             ),
         )
     return packages
+
 
 def _load_bom(filename: str = "") -> Dict[Any, Any]:
     if filename:
@@ -48,6 +51,7 @@ def _load_bom(filename: str = "") -> Dict[Any, Any]:
             raise ProcessingError("Provided file does not exist")
     else:
         raise ProcessingError("No file provided")
+
 
 def _extract_licenses(component: Dict[Any, Any]) -> List[str]:
     licenses = []
@@ -63,10 +67,9 @@ def _extract_licenses(component: Dict[Any, Any]) -> List[str]:
         licenses.append("unknown")
     return licenses
 
+
 def _extract_purl(component: Dict[Any, Any]) -> str:
     purl = ""
     if component.get(PURL_ID) is not None:
         purl = component[PURL_ID]
     return purl
-
-

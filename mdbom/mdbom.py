@@ -10,6 +10,7 @@ import logging
 import click
 
 from mdbom.bom.bom import ProcessingError
+from mdbom.bom.processor import get_packages_from_bom
 from mdbom.md.md import GeneratingError, generate_markdown
 
 log_handler = logging.StreamHandler()
@@ -53,26 +54,38 @@ def info():
     default="template.md.jinja",
     help="The Jinja2 template file",
 )
-def generate(input_file, output_file, template_file):
+@click.option(
+    "--type",
+    "package_type",
+    default="",
+    help="Can be used to focus on a single package type e.g. pypi.",
+)
+def generate(input_file, output_file, template_file, package_type):
     """Processes a given BOM file and generates the markdown file.
 
     Args:
-        input_file: The input_file holding the BOM info.
-        output_file: The output_file where the result should be stored.
-        template_file: The template_file to be used for markdown generation.
+        input_file:     The input_file holding the BOM info.
+        output_file:    The output_file where the result should be stored.
+        template_file:  The template_file to be used for markdown generation.
+        package_type:   Can be used to set the focus on a specific package
+                        type like pypi
 
     Raises:
         ClickException: In case invalid input is provided.
     """
-    
-    # try:
-    #     generate_markdown(
-    #         template=template_file,
-    #         file_name=output_file,
-    #         packages=packages,
-    #     )
-    # except GeneratingError as ge:
-    #     raise click.ClickException(ge)
+    try:
+        packages = get_packages_from_bom(filename=input_file)
+    except ProcessingError as pe:
+        raise click.ClickException(pe)
+
+    try:
+        generate_markdown(
+            template=template_file,
+            file_name=output_file,
+            packages=packages,
+        )
+    except GeneratingError as ge:
+        raise click.ClickException(ge)
 
     click.echo("Generated markdown file:")
     click.echo(output_file)
