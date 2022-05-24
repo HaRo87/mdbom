@@ -5,7 +5,7 @@ import os
 from typing import Any, Dict, List
 
 from mdbom.bom.bom import Package, ProcessingError
-from mdbom.bom.urls import get_url
+from mdbom.bom.urls import get_purl_type, get_url
 
 COMPONENTS_ID = "components"
 LICENSE_ID = "license"
@@ -40,6 +40,29 @@ def get_packages_from_bom(filename: str = "") -> List[Package]:
             ),
         )
     return packages
+
+
+def filter_packages_by_type(
+    packages: List[Package],
+    package_type: str,
+) -> List[Package]:
+    """Filter a list of packages based on type.
+
+    Args:
+        packages:       The list of packages to filter.
+        package_type:   The packages type to apply as filter.
+
+    Returns:
+        A filtered list of packages.
+    """
+    if not package_type:
+        return packages
+    return list(
+        filter(
+            lambda package: get_purl_type(package.purl) == package_type,
+            packages,
+        ),
+    )
 
 
 def _load_bom(filename: str = "") -> Dict[Any, Any]:

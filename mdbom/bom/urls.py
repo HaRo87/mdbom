@@ -19,7 +19,7 @@ url_types = {
 
 
 def get_url(purl: str) -> str:
-    """Contruct the package URL from provided purl.
+    """Construct the package URL from provided purl.
 
     Args:
         purl: The purl of the package.
@@ -27,16 +27,33 @@ def get_url(purl: str) -> str:
     Returns:
         A URL to the package.
     """
-    match = purl_reg.match(purl)
-    if match:
-        if match.group(TYPE_GROUP_ID) not in url_types:
-            logger.warning("Package type not supported, returning empty URL")
-            return ""
+    purl_type = get_purl_type(purl=purl)
+    if purl_type:
         return _convert_purl_to_url(
             purl=purl,
-            purl_type=match.group(TYPE_GROUP_ID),
+            purl_type=purl_type,
         )
-    logger.warning("No valid purl provided, returning empty URL")
+    logger.warning(
+        "No valid purl: {0} provided, returning empty URL".format(purl),
+    )
+    return ""
+
+
+def get_purl_type(purl: str) -> str:
+    """Extract the package type from provided purl.
+
+    Args:
+        purl: The purl of the package.
+
+    Returns:
+        A type to the package.
+    """
+    match = purl_reg.match(purl)
+    if match:
+        return match.group(TYPE_GROUP_ID)
+    logger.warning(
+        "No valid purl: {0} provided, returning empty type".format(purl),
+    )
     return ""
 
 
@@ -52,6 +69,13 @@ def _get_package_and_version(purl: str) -> Tuple[str, str]:
 
 
 def _convert_purl_to_url(purl, purl_type: str) -> str:
+    if purl_type not in url_types:
+        logger.warning(
+            "Package type: {0} not supported, returning empty URL".format(
+                purl_type,
+            ),
+        )
+        return ""
     url = url_types[purl_type]
     package, version = _get_package_and_version(purl)
     if package and version:
@@ -61,7 +85,7 @@ def _convert_purl_to_url(purl, purl_type: str) -> str:
             url += "{0}/{1}".format(package, version)
     else:
         logger.warning(
-            f"No valid {purl_type} purl provided, returning empty URL",
+            "No valid purl: {0} provided, returning empty URL".format(purl),
         )
         url = ""
     return url
