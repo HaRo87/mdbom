@@ -1,8 +1,12 @@
 import pathlib
 from unittest import TestCase
 from unittest.mock import patch
-from mdbom.bom.bom import ProcessingError
-from mdbom.bom.processor import _load_bom, get_packages_from_bom
+from mdbom.bom.bom import Package, ProcessingError
+from mdbom.bom.processor import (
+    _load_bom,
+    get_packages_from_bom,
+    filter_packages_by_type,
+)
 
 
 class TestProcessor(TestCase):
@@ -92,4 +96,56 @@ class TestProcessor(TestCase):
         self.assertEqual("pkg:npm/eslint@7.27.0", packages[0].purl)
         self.assertEqual(
             "https://www.npmjs.com/package/eslint/v/7.27.0", packages[0].url
+        )
+
+    def test_filter_packages_by_type_no_type_returns_all(self):
+        packages = packages = [
+            Package(
+                "test",
+                "0.1.0",
+                "lib",
+                "MIT",
+                "pkg:pypi/some-package_1.2.3",
+                "https://some.url",
+            ),
+            Package(
+                "test2",
+                "0.1.1",
+                "lib",
+                "MIT",
+                "pkg:npm/some-package_1.2.3",
+                "https://some2.url",
+            ),
+        ]
+        filtered_packages = filter_packages_by_type(
+            packages=packages, package_type=""
+        )
+        self.assertEqual(packages, filtered_packages)
+
+    def test_filter_packages_by_type_type_returns_filtered_list(self):
+        packages = packages = [
+            Package(
+                "test",
+                "0.1.0",
+                "lib",
+                "MIT",
+                "pkg:pypi/some-package_1.2.3",
+                "https://some.url",
+            ),
+            Package(
+                "test2",
+                "0.1.1",
+                "lib",
+                "MIT",
+                "pkg:npm/some-package_1.2.3",
+                "https://some2.url",
+            ),
+        ]
+        filtered_packages = filter_packages_by_type(
+            packages=packages, package_type="npm"
+        )
+        self.assertNotEqual(packages, filtered_packages)
+        self.assertTrue(len(filtered_packages) == 1)
+        self.assertEqual(
+            "pkg:npm/some-package_1.2.3", filtered_packages[0].purl
         )
