@@ -13,9 +13,9 @@ class TestProcessor(TestCase):
 
     input_dir = pathlib.Path.cwd() / "tests" / "inputs"
 
-    def test_load_bom_fails_due_to_empty_file_name(self):
+    def test_get_packages_from_bom_fails_due_to_empty_file_name(self):
         with self.assertRaises(ProcessingError) as pe:
-            _load_bom()
+            get_packages_from_bom()
         self.assertEqual("No file provided", str(pe.exception))
 
     @patch("os.path.exists")
@@ -42,7 +42,7 @@ class TestProcessor(TestCase):
             ]
         }
         packages = get_packages_from_bom(
-            filename=self.input_dir / "bom-pypi.json"
+            filepath=self.input_dir / "bom-pypi.json"
         )
         self.assertEqual("Test", packages[0].name)
         self.assertEqual("unknown", packages[0].licenses)
@@ -62,7 +62,7 @@ class TestProcessor(TestCase):
             ]
         }
         packages = get_packages_from_bom(
-            filename=self.input_dir / "bom-pypi.json"
+            filepath=self.input_dir / "bom-pypi.json"
         )
         self.assertEqual("Test", packages[0].name)
         self.assertEqual("unknown", packages[0].licenses)
@@ -72,7 +72,7 @@ class TestProcessor(TestCase):
 
     def test_get_packages_pypi_bom_success(self):
         packages = get_packages_from_bom(
-            filename=self.input_dir / "bom-pypi.json"
+            filepath=self.input_dir / "bom-pypi.json"
         )
         self.assertEqual("argcomplete", packages[0].name)
         self.assertEqual("Apache Software License", packages[0].licenses)
@@ -87,7 +87,7 @@ class TestProcessor(TestCase):
 
     def test_get_packages_npm_bom_success(self):
         packages = get_packages_from_bom(
-            filename=self.input_dir / "bom-npm.json"
+            filepath=self.input_dir / "bom-npm.json"
         )
         self.assertEqual("eslint", packages[0].name)
         self.assertEqual("MIT", packages[0].licenses)
@@ -97,6 +97,26 @@ class TestProcessor(TestCase):
         self.assertEqual(
             "https://www.npmjs.com/package/eslint/v/7.27.0", packages[0].url
         )
+
+    def test_get_packages_golang_bom_success(self):
+        packages = get_packages_from_bom(
+            filepath=self.input_dir / "bom-golang.json"
+        )
+        self.assertEqual("cloud.google.com/go", packages[0].name)
+        self.assertEqual("library", packages[0].kind)
+        self.assertEqual("v0.93.3", packages[0].version)
+        self.assertEqual(
+            "pkg:golang/cloud.google.com/go@v0.93.3?type=module",
+            packages[0].purl,
+        )
+        self.assertEqual(
+            "https://pkg.go.dev/cloud.google.com/go@v0.93.3", packages[0].url
+        )
+        self.assertEqual("cloud.google.com/go/container", packages[1].name)
+
+    def test_get_packages_multiple_boms_success(self):
+        packages = get_packages_from_bom(filepath=self.input_dir)
+        self.assertEqual(6, len(packages))
 
     def test_filter_packages_by_type_no_type_returns_all(self):
         packages = packages = [
