@@ -38,7 +38,7 @@ def info():
 @click.command()
 @click.option(
     "--input",
-    "input_file",
+    "input_path",
     default="bom.json",
     help="BOM file to process",
 )
@@ -60,11 +60,11 @@ def info():
     default="",
     help="Can be used to focus on a single package type e.g. pypi.",
 )
-def generate(input_file, output_file, template_file, package_type):
+def generate(input_path, output_file, template_file, package_type):
     """Processes a given BOM file and generates the markdown file.
 
     Args:
-        input_file:     The input_file holding the BOM info.
+        input_path:     The input_path, can be a single file or a directory.
         output_file:    The output_file where the result should be stored.
         template_file:  The template_file to be used for markdown generation.
         package_type:   Can be used to set the focus on a specific package
@@ -75,7 +75,7 @@ def generate(input_file, output_file, template_file, package_type):
     """
     try:
         packages = filter_packages_by_type(
-            packages=get_packages_from_bom(filename=input_file),
+            packages=get_packages_from_bom(filepath=input_path),
             package_type=package_type,
         )
     except ProcessingError as pe:
