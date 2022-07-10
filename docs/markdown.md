@@ -46,8 +46,9 @@ mdb generate --input ./my-boms --output 3rd-party.md --template template.md.jinj
 
 ## Supported package managers 
 
-Currently, MdBOM supports the following two package managers types:
+Currently, MdBOM supports the following package manager types:
 
 - pypi
 - npm 
+- golang
 

@@ -7,6 +7,7 @@ from typing import Tuple
 TYPE_GROUP_ID = "type"
 REST_GROUP_ID = "rest"
 NPM_TYPE = "npm"
+GOLANG_TYPE = "golang"
 
 logger = logging.getLogger("MdBOM")
 
@@ -15,6 +16,7 @@ purl_reg = re.compile(r"pkg:(?P<type>[a-z]+)\/(?P<rest>\S*)")
 url_types = {
     "pypi": "https://pypi.org/project/",
     "npm": "https://www.npmjs.com/package/",
+    "golang": "https://pkg.go.dev/",
 }
 
 
@@ -64,8 +66,17 @@ def _get_package_and_version(purl: str) -> Tuple[str, str]:
         result = match.group(REST_GROUP_ID).split("@")
         if len(result) == 2:
             package = result[0]
-            version = result[1]
+            version = _extract_version(result[1])
     return package, version
+
+
+def _extract_version(content: str) -> str:
+    version = content
+    if "?" in content:
+        version = content.split("?")[0]
+    else:
+        version = content
+    return version
 
 
 def _convert_purl_to_url(purl, purl_type: str) -> str:
@@ -81,6 +92,8 @@ def _convert_purl_to_url(purl, purl_type: str) -> str:
     if package and version:
         if purl_type == NPM_TYPE:
             url += "{0}/v/{1}".format(package, version)
+        elif purl_type == GOLANG_TYPE:
+            url += "{0}@{1}".format(package, version)
         else:
             url += "{0}/{1}".format(package, version)
     else:
