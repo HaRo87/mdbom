@@ -2,37 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://haro87.github.io/mdbom/dev/</loc>
-         <lastmod>2022-01-30</lastmod>
+         <lastmod>2022-07-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://haro87.github.io/mdbom/dev/3rd-party/</loc>
+         <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://haro87.github.io/mdbom/dev/bom/</loc>
-         <lastmod>2022-01-30</lastmod>
+         <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://haro87.github.io/mdbom/dev/changelog/</loc>
-         <lastmod>2022-01-30</lastmod>
+         <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://haro87.github.io/mdbom/dev/contributing/</loc>
-         <lastmod>2022-01-30</lastmod>
+         <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://haro87.github.io/mdbom/dev/install/</loc>
-         <lastmod>2022-01-30</lastmod>
+         <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://haro87.github.io/mdbom/dev/license/</loc>
-         <lastmod>2022-01-30</lastmod>
+         <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://haro87.github.io/mdbom/dev/markdown/</loc>
-         <lastmod>2022-01-30</lastmod>
+         <lastmod>2022-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
