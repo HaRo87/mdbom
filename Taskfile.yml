@@ -136,6 +136,7 @@ tasks:
       Using cyclonedx-bom to generate the SBOM for this project which
       is used for MdBOM to generate the 3rd party report for the docs.
     cmds:
+      - rm -f bom.json
       - $RUN_CMD cyclonedx-py --poetry --in-file poetry.lock --format json --output bom.json
       - $RUN_CMD mdb generate --input bom.json --output 3rd-party.md --template 3rd-party-template.md.jinja --type pypi
   build-docs:
