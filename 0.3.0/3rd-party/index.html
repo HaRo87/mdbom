@@ -1,0 +1,1266 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Markdown Software Bill Of Materials">
+      
+      
+      
+        <meta name="author" content="Robert Hansel">
+      
+      
+        <link rel="canonical" href="https://haro87.github.io/mdbom/0.3.0/3rd-party/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3rd Party Software - MdBOM Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3rd-party-software" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MdBOM Documentation" class="md-header__button md-logo" aria-label="MdBOM Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MdBOM Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3rd Party Software
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/HaRo87/mdbom" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HaRo87/mdbom
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MdBOM Documentation" class="md-nav__button md-logo" aria-label="MdBOM Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    MdBOM Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/HaRo87/mdbom" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HaRo87/mdbom
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Generation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Generation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Generation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bom/" class="md-nav__link">
+        Software Bill Of Materials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        Markdown Report
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3rd Party Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3rd Party Software
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3rd-party-software" class="md-nav__link">
+    3rd Party Software
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/HaRo87" class="md-nav__link">
+        Author's Website
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3rd-party-software" class="md-nav__link">
+    3rd Party Software
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/HaRo87/mdbom/edit/master/docs/3rd-party.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>3rd Party Software</h1>
+                
+                <h3 id="3rd-party-software">3rd Party Software<a class="headerlink" href="#3rd-party-software" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Version</th>
+<th>Type</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ansimarkup</td>
+<td>1.5.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/ansimarkup/1.5.0">https://pypi.org/project/ansimarkup/1.5.0</a></td>
+</tr>
+<tr>
+<td>astor</td>
+<td>0.8.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/astor/0.8.1">https://pypi.org/project/astor/0.8.1</a></td>
+</tr>
+<tr>
+<td>atomicwrites</td>
+<td>1.4.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/atomicwrites/1.4.1">https://pypi.org/project/atomicwrites/1.4.1</a></td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>21.4.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/attrs/21.4.0">https://pypi.org/project/attrs/21.4.0</a></td>
+</tr>
+<tr>
+<td>autoflake</td>
+<td>1.4</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/autoflake/1.4">https://pypi.org/project/autoflake/1.4</a></td>
+</tr>
+<tr>
+<td>bandit</td>
+<td>1.7.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/bandit/1.7.2">https://pypi.org/project/bandit/1.7.2</a></td>
+</tr>
+<tr>
+<td>black</td>
+<td>22.6.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/black/22.6.0">https://pypi.org/project/black/22.6.0</a></td>
+</tr>
+<tr>
+<td>cached-property</td>
+<td>1.5.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/cached-property/1.5.2">https://pypi.org/project/cached-property/1.5.2</a></td>
+</tr>
+<tr>
+<td>certifi</td>
+<td>2022.6.15</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/certifi/2022.6.15">https://pypi.org/project/certifi/2022.6.15</a></td>
+</tr>
+<tr>
+<td>charset-normalizer</td>
+<td>2.1.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/charset-normalizer/2.1.0">https://pypi.org/project/charset-normalizer/2.1.0</a></td>
+</tr>
+<tr>
+<td>click</td>
+<td>8.1.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/click/8.1.3">https://pypi.org/project/click/8.1.3</a></td>
+</tr>
+<tr>
+<td>colorama</td>
+<td>0.4.5</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/colorama/0.4.5">https://pypi.org/project/colorama/0.4.5</a></td>
+</tr>
+<tr>
+<td>coverage</td>
+<td>6.4.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/coverage/6.4.1">https://pypi.org/project/coverage/6.4.1</a></td>
+</tr>
+<tr>
+<td>cyclonedx-bom</td>
+<td>3.5.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/cyclonedx-bom/3.5.0">https://pypi.org/project/cyclonedx-bom/3.5.0</a></td>
+</tr>
+<tr>
+<td>cyclonedx-python-lib</td>
+<td>2.6.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/cyclonedx-python-lib/2.6.0">https://pypi.org/project/cyclonedx-python-lib/2.6.0</a></td>
+</tr>
+<tr>
+<td>darglint</td>
+<td>1.8.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/darglint/1.8.1">https://pypi.org/project/darglint/1.8.1</a></td>
+</tr>
+<tr>
+<td>docutils</td>
+<td>0.19</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/docutils/0.19">https://pypi.org/project/docutils/0.19</a></td>
+</tr>
+<tr>
+<td>dparse</td>
+<td>0.5.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/dparse/0.5.1">https://pypi.org/project/dparse/0.5.1</a></td>
+</tr>
+<tr>
+<td>duty</td>
+<td>0.6.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/duty/0.6.0">https://pypi.org/project/duty/0.6.0</a></td>
+</tr>
+<tr>
+<td>entrypoints</td>
+<td>0.4</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/entrypoints/0.4">https://pypi.org/project/entrypoints/0.4</a></td>
+</tr>
+<tr>
+<td>eradicate</td>
+<td>2.1.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/eradicate/2.1.0">https://pypi.org/project/eradicate/2.1.0</a></td>
+</tr>
+<tr>
+<td>execnet</td>
+<td>1.9.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/execnet/1.9.0">https://pypi.org/project/execnet/1.9.0</a></td>
+</tr>
+<tr>
+<td>failprint</td>
+<td>0.6.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/failprint/0.6.2">https://pypi.org/project/failprint/0.6.2</a></td>
+</tr>
+<tr>
+<td>flake8</td>
+<td>3.9.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8/3.9.2">https://pypi.org/project/flake8/3.9.2</a></td>
+</tr>
+<tr>
+<td>flake8-bandit</td>
+<td>2.1.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-bandit/2.1.2">https://pypi.org/project/flake8-bandit/2.1.2</a></td>
+</tr>
+<tr>
+<td>flake8-black</td>
+<td>0.2.5</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-black/0.2.5">https://pypi.org/project/flake8-black/0.2.5</a></td>
+</tr>
+<tr>
+<td>flake8-broken-line</td>
+<td>0.4.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-broken-line/0.4.0">https://pypi.org/project/flake8-broken-line/0.4.0</a></td>
+</tr>
+<tr>
+<td>flake8-bugbear</td>
+<td>22.7.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-bugbear/22.7.1">https://pypi.org/project/flake8-bugbear/22.7.1</a></td>
+</tr>
+<tr>
+<td>flake8-builtins</td>
+<td>1.5.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-builtins/1.5.3">https://pypi.org/project/flake8-builtins/1.5.3</a></td>
+</tr>
+<tr>
+<td>flake8-commas</td>
+<td>2.1.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-commas/2.1.0">https://pypi.org/project/flake8-commas/2.1.0</a></td>
+</tr>
+<tr>
+<td>flake8-comprehensions</td>
+<td>3.10.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-comprehensions/3.10.0">https://pypi.org/project/flake8-comprehensions/3.10.0</a></td>
+</tr>
+<tr>
+<td>flake8-debugger</td>
+<td>4.1.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-debugger/4.1.2">https://pypi.org/project/flake8-debugger/4.1.2</a></td>
+</tr>
+<tr>
+<td>flake8-docstrings</td>
+<td>1.6.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-docstrings/1.6.0">https://pypi.org/project/flake8-docstrings/1.6.0</a></td>
+</tr>
+<tr>
+<td>flake8-eradicate</td>
+<td>1.2.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-eradicate/1.2.1">https://pypi.org/project/flake8-eradicate/1.2.1</a></td>
+</tr>
+<tr>
+<td>flake8-isort</td>
+<td>4.1.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-isort/4.1.1">https://pypi.org/project/flake8-isort/4.1.1</a></td>
+</tr>
+<tr>
+<td>flake8-plugin-utils</td>
+<td>1.3.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-plugin-utils/1.3.2">https://pypi.org/project/flake8-plugin-utils/1.3.2</a></td>
+</tr>
+<tr>
+<td>flake8-polyfill</td>
+<td>1.0.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-polyfill/1.0.2">https://pypi.org/project/flake8-polyfill/1.0.2</a></td>
+</tr>
+<tr>
+<td>flake8-pytest-style</td>
+<td>1.6.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-pytest-style/1.6.0">https://pypi.org/project/flake8-pytest-style/1.6.0</a></td>
+</tr>
+<tr>
+<td>flake8-quotes</td>
+<td>3.3.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-quotes/3.3.1">https://pypi.org/project/flake8-quotes/3.3.1</a></td>
+</tr>
+<tr>
+<td>flake8-rst-docstrings</td>
+<td>0.2.6</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-rst-docstrings/0.2.6">https://pypi.org/project/flake8-rst-docstrings/0.2.6</a></td>
+</tr>
+<tr>
+<td>flake8-string-format</td>
+<td>0.3.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-string-format/0.3.0">https://pypi.org/project/flake8-string-format/0.3.0</a></td>
+</tr>
+<tr>
+<td>flake8-tidy-imports</td>
+<td>4.8.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-tidy-imports/4.8.0">https://pypi.org/project/flake8-tidy-imports/4.8.0</a></td>
+</tr>
+<tr>
+<td>flake8-variables-names</td>
+<td>0.0.4</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flake8-variables-names/0.0.4">https://pypi.org/project/flake8-variables-names/0.0.4</a></td>
+</tr>
+<tr>
+<td>flakehell</td>
+<td>0.9.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/flakehell/0.9.0">https://pypi.org/project/flakehell/0.9.0</a></td>
+</tr>
+<tr>
+<td>ghp-import</td>
+<td>2.1.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/ghp-import/2.1.0">https://pypi.org/project/ghp-import/2.1.0</a></td>
+</tr>
+<tr>
+<td>git-changelog</td>
+<td>0.4.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/git-changelog/0.4.2">https://pypi.org/project/git-changelog/0.4.2</a></td>
+</tr>
+<tr>
+<td>gitdb</td>
+<td>4.0.9</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/gitdb/4.0.9">https://pypi.org/project/gitdb/4.0.9</a></td>
+</tr>
+<tr>
+<td>gitpython</td>
+<td>3.1.27</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/gitpython/3.1.27">https://pypi.org/project/gitpython/3.1.27</a></td>
+</tr>
+<tr>
+<td>h11</td>
+<td>0.13.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/h11/0.13.0">https://pypi.org/project/h11/0.13.0</a></td>
+</tr>
+<tr>
+<td>httpcore</td>
+<td>0.12.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/httpcore/0.12.3">https://pypi.org/project/httpcore/0.12.3</a></td>
+</tr>
+<tr>
+<td>httpx</td>
+<td>0.16.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/httpx/0.16.1">https://pypi.org/project/httpx/0.16.1</a></td>
+</tr>
+<tr>
+<td>idna</td>
+<td>3.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/idna/3.3">https://pypi.org/project/idna/3.3</a></td>
+</tr>
+<tr>
+<td>importlib-metadata</td>
+<td>4.12.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/importlib-metadata/4.12.0">https://pypi.org/project/importlib-metadata/4.12.0</a></td>
+</tr>
+<tr>
+<td>iniconfig</td>
+<td>1.1.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/iniconfig/1.1.1">https://pypi.org/project/iniconfig/1.1.1</a></td>
+</tr>
+<tr>
+<td>isort</td>
+<td>4.3.21</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/isort/4.3.21">https://pypi.org/project/isort/4.3.21</a></td>
+</tr>
+<tr>
+<td>jinja2</td>
+<td>2.11.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/jinja2/2.11.3">https://pypi.org/project/jinja2/2.11.3</a></td>
+</tr>
+<tr>
+<td>jinja2-cli</td>
+<td>0.7.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/jinja2-cli/0.7.0">https://pypi.org/project/jinja2-cli/0.7.0</a></td>
+</tr>
+<tr>
+<td>markdown</td>
+<td>3.3.7</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/markdown/3.3.7">https://pypi.org/project/markdown/3.3.7</a></td>
+</tr>
+<tr>
+<td>markupsafe</td>
+<td>2.0.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/markupsafe/2.0.1">https://pypi.org/project/markupsafe/2.0.1</a></td>
+</tr>
+<tr>
+<td>mccabe</td>
+<td>0.6.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mccabe/0.6.1">https://pypi.org/project/mccabe/0.6.1</a></td>
+</tr>
+<tr>
+<td>mergedeep</td>
+<td>1.3.4</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mergedeep/1.3.4">https://pypi.org/project/mergedeep/1.3.4</a></td>
+</tr>
+<tr>
+<td>mike</td>
+<td>1.1.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mike/1.1.2">https://pypi.org/project/mike/1.1.2</a></td>
+</tr>
+<tr>
+<td>mkdocs</td>
+<td>1.3.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mkdocs/1.3.0">https://pypi.org/project/mkdocs/1.3.0</a></td>
+</tr>
+<tr>
+<td>mkdocs-material</td>
+<td>7.3.6</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mkdocs-material/7.3.6">https://pypi.org/project/mkdocs-material/7.3.6</a></td>
+</tr>
+<tr>
+<td>mkdocs-material-extensions</td>
+<td>1.0.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mkdocs-material-extensions/1.0.3">https://pypi.org/project/mkdocs-material-extensions/1.0.3</a></td>
+</tr>
+<tr>
+<td>mypy</td>
+<td>0.950</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mypy/0.950">https://pypi.org/project/mypy/0.950</a></td>
+</tr>
+<tr>
+<td>mypy-extensions</td>
+<td>0.4.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/mypy-extensions/0.4.3">https://pypi.org/project/mypy-extensions/0.4.3</a></td>
+</tr>
+<tr>
+<td>packageurl-python</td>
+<td>0.10.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/packageurl-python/0.10.0">https://pypi.org/project/packageurl-python/0.10.0</a></td>
+</tr>
+<tr>
+<td>packaging</td>
+<td>21.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/packaging/21.3">https://pypi.org/project/packaging/21.3</a></td>
+</tr>
+<tr>
+<td>pathspec</td>
+<td>0.9.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pathspec/0.9.0">https://pypi.org/project/pathspec/0.9.0</a></td>
+</tr>
+<tr>
+<td>pbr</td>
+<td>5.9.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pbr/5.9.0">https://pypi.org/project/pbr/5.9.0</a></td>
+</tr>
+<tr>
+<td>pep8-naming</td>
+<td>0.12.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pep8-naming/0.12.1">https://pypi.org/project/pep8-naming/0.12.1</a></td>
+</tr>
+<tr>
+<td>pip-requirements-parser</td>
+<td>31.2.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pip-requirements-parser/31.2.0">https://pypi.org/project/pip-requirements-parser/31.2.0</a></td>
+</tr>
+<tr>
+<td>platformdirs</td>
+<td>2.5.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/platformdirs/2.5.2">https://pypi.org/project/platformdirs/2.5.2</a></td>
+</tr>
+<tr>
+<td>pluggy</td>
+<td>1.0.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pluggy/1.0.0">https://pypi.org/project/pluggy/1.0.0</a></td>
+</tr>
+<tr>
+<td>ptyprocess</td>
+<td>0.6.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/ptyprocess/0.6.0">https://pypi.org/project/ptyprocess/0.6.0</a></td>
+</tr>
+<tr>
+<td>py</td>
+<td>1.11.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/py/1.11.0">https://pypi.org/project/py/1.11.0</a></td>
+</tr>
+<tr>
+<td>pycodestyle</td>
+<td>2.7.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pycodestyle/2.7.0">https://pypi.org/project/pycodestyle/2.7.0</a></td>
+</tr>
+<tr>
+<td>pydocstyle</td>
+<td>6.1.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pydocstyle/6.1.1">https://pypi.org/project/pydocstyle/6.1.1</a></td>
+</tr>
+<tr>
+<td>pyflakes</td>
+<td>2.3.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pyflakes/2.3.1">https://pypi.org/project/pyflakes/2.3.1</a></td>
+</tr>
+<tr>
+<td>pygments</td>
+<td>2.12.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pygments/2.12.0">https://pypi.org/project/pygments/2.12.0</a></td>
+</tr>
+<tr>
+<td>pymdown-extensions</td>
+<td>9.5</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pymdown-extensions/9.5">https://pypi.org/project/pymdown-extensions/9.5</a></td>
+</tr>
+<tr>
+<td>pyparsing</td>
+<td>3.0.9</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pyparsing/3.0.9">https://pypi.org/project/pyparsing/3.0.9</a></td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>6.2.5</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pytest/6.2.5">https://pypi.org/project/pytest/6.2.5</a></td>
+</tr>
+<tr>
+<td>pytest-cov</td>
+<td>2.12.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pytest-cov/2.12.1">https://pypi.org/project/pytest-cov/2.12.1</a></td>
+</tr>
+<tr>
+<td>pytest-forked</td>
+<td>1.4.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pytest-forked/1.4.0">https://pypi.org/project/pytest-forked/1.4.0</a></td>
+</tr>
+<tr>
+<td>pytest-randomly</td>
+<td>3.12.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pytest-randomly/3.12.0">https://pypi.org/project/pytest-randomly/3.12.0</a></td>
+</tr>
+<tr>
+<td>pytest-sugar</td>
+<td>0.9.5</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pytest-sugar/0.9.5">https://pypi.org/project/pytest-sugar/0.9.5</a></td>
+</tr>
+<tr>
+<td>pytest-xdist</td>
+<td>2.5.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pytest-xdist/2.5.0">https://pypi.org/project/pytest-xdist/2.5.0</a></td>
+</tr>
+<tr>
+<td>python-dateutil</td>
+<td>2.8.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/python-dateutil/2.8.2">https://pypi.org/project/python-dateutil/2.8.2</a></td>
+</tr>
+<tr>
+<td>pyyaml</td>
+<td>6.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pyyaml/6.0">https://pypi.org/project/pyyaml/6.0</a></td>
+</tr>
+<tr>
+<td>pyyaml-env-tag</td>
+<td>0.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/pyyaml-env-tag/0.1">https://pypi.org/project/pyyaml-env-tag/0.1</a></td>
+</tr>
+<tr>
+<td>requests</td>
+<td>2.28.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/requests/2.28.1">https://pypi.org/project/requests/2.28.1</a></td>
+</tr>
+<tr>
+<td>restructuredtext-lint</td>
+<td>1.4.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/restructuredtext-lint/1.4.0">https://pypi.org/project/restructuredtext-lint/1.4.0</a></td>
+</tr>
+<tr>
+<td>rfc3986</td>
+<td>1.5.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/rfc3986/1.5.0">https://pypi.org/project/rfc3986/1.5.0</a></td>
+</tr>
+<tr>
+<td>safety</td>
+<td>1.10.3</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/safety/1.10.3">https://pypi.org/project/safety/1.10.3</a></td>
+</tr>
+<tr>
+<td>six</td>
+<td>1.16.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/six/1.16.0">https://pypi.org/project/six/1.16.0</a></td>
+</tr>
+<tr>
+<td>smmap</td>
+<td>5.0.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/smmap/5.0.0">https://pypi.org/project/smmap/5.0.0</a></td>
+</tr>
+<tr>
+<td>sniffio</td>
+<td>1.2.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/sniffio/1.2.0">https://pypi.org/project/sniffio/1.2.0</a></td>
+</tr>
+<tr>
+<td>snowballstemmer</td>
+<td>2.2.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/snowballstemmer/2.2.0">https://pypi.org/project/snowballstemmer/2.2.0</a></td>
+</tr>
+<tr>
+<td>sortedcontainers</td>
+<td>2.4.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/sortedcontainers/2.4.0">https://pypi.org/project/sortedcontainers/2.4.0</a></td>
+</tr>
+<tr>
+<td>stevedore</td>
+<td>3.5.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/stevedore/3.5.0">https://pypi.org/project/stevedore/3.5.0</a></td>
+</tr>
+<tr>
+<td>termcolor</td>
+<td>1.1.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/termcolor/1.1.0">https://pypi.org/project/termcolor/1.1.0</a></td>
+</tr>
+<tr>
+<td>testfixtures</td>
+<td>6.18.5</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/testfixtures/6.18.5">https://pypi.org/project/testfixtures/6.18.5</a></td>
+</tr>
+<tr>
+<td>toml</td>
+<td>0.10.2</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/toml/0.10.2">https://pypi.org/project/toml/0.10.2</a></td>
+</tr>
+<tr>
+<td>tomli</td>
+<td>2.0.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/tomli/2.0.1">https://pypi.org/project/tomli/2.0.1</a></td>
+</tr>
+<tr>
+<td>typed-ast</td>
+<td>1.5.4</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/typed-ast/1.5.4">https://pypi.org/project/typed-ast/1.5.4</a></td>
+</tr>
+<tr>
+<td>typing-extensions</td>
+<td>4.3.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/typing-extensions/4.3.0">https://pypi.org/project/typing-extensions/4.3.0</a></td>
+</tr>
+<tr>
+<td>urllib3</td>
+<td>1.26.10</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/urllib3/1.26.10">https://pypi.org/project/urllib3/1.26.10</a></td>
+</tr>
+<tr>
+<td>verspec</td>
+<td>0.1.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/verspec/0.1.0">https://pypi.org/project/verspec/0.1.0</a></td>
+</tr>
+<tr>
+<td>watchdog</td>
+<td>2.1.9</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/watchdog/2.1.9">https://pypi.org/project/watchdog/2.1.9</a></td>
+</tr>
+<tr>
+<td>wemake-python-styleguide</td>
+<td>0.16.1</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/wemake-python-styleguide/0.16.1">https://pypi.org/project/wemake-python-styleguide/0.16.1</a></td>
+</tr>
+<tr>
+<td>zipp</td>
+<td>3.8.0</td>
+<td>library</td>
+<td><a href="https://pypi.org/project/zipp/3.8.0">https://pypi.org/project/zipp/3.8.0</a></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../changelog/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Changelog" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Changelog
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Robert Hansel 2021
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
