@@ -1,0 +1,219 @@
+{
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.4",
+    "serialNumber": "urn:uuid:bb095efe-b844-436e-912a-17cc7b27a2b0",
+    "version": 1,
+    "metadata": {
+        "timestamp": "2022-06-28T20:45:47Z",
+        "tools": [
+            {
+                "vendor": "CycloneDX",
+                "name": "cyclonedx-gomod",
+                "version": "v0.0.0-20220628204043-1c8f56f825f1",
+                "hashes": [
+                    {
+                        "alg": "MD5",
+                        "content": "f21d676e30921202afcb21b64278c9b7"
+                    },
+                    {
+                        "alg": "SHA-1",
+                        "content": "b0025cf802df534c4320d233920bfaec1635ed15"
+                    },
+                    {
+                        "alg": "SHA-256",
+                        "content": "359849312124c48170a8ff2f5b407a518bdd63a21fba2d1e8d586ac7e7e5d7e0"
+                    },
+                    {
+                        "alg": "SHA-384",
+                        "content": "d0eaf23eeaf1e651eec965a5cc9e88e365eae8f3af58cb661fc93253d214db4fc95a39b75abaa3540363c2a7e34571f5"
+                    },
+                    {
+                        "alg": "SHA-512",
+                        "content": "2f38ff200222392d8f14d532e3d74c7a949ed05fb37e431e3829533b1b6863f4dcce6639fc9e4b63d68517461b827648297ccdb6905d1623a22940b1b8bd3a6d"
+                    }
+                ],
+                "externalReferences": [
+                    {
+                        "url": "https://github.com/CycloneDX/cyclonedx-gomod",
+                        "type": "vcs"
+                    },
+                    {
+                        "url": "https://cyclonedx.org",
+                        "type": "website"
+                    }
+                ]
+            }
+        ],
+        "component": {
+            "bom-ref": "pkg:golang/k8s.io/minikube@v1.23.1?type=module",
+            "type": "application",
+            "name": "k8s.io/minikube",
+            "version": "v1.23.1",
+            "purl": "pkg:golang/k8s.io/minikube@v1.23.1?type=module",
+            "evidence": {
+                "licenses": [
+                    {
+                        "license": {
+                            "id": "Apache-2.0"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "components": [
+        {
+            "bom-ref": "pkg:golang/cloud.google.com/go@v0.93.3?type=module",
+            "type": "library",
+            "name": "cloud.google.com/go",
+            "version": "v0.93.3",
+            "scope": "required",
+            "hashes": [
+                {
+                    "alg": "SHA-256",
+                    "content": "c0f064b59173601702655011bf054aa87d6e123f9a2d7a1f244b6b6f8a0eb22a"
+                }
+            ],
+            "purl": "pkg:golang/cloud.google.com/go@v0.93.3?type=module",
+            "evidence": {
+                "licenses": [
+                    {
+                        "license": {
+                            "id": "Apache-2.0"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "bom-ref": "pkg:golang/cloud.google.com/go/container@v0.1.0?type=module",
+            "type": "library",
+            "name": "cloud.google.com/go/container",
+            "version": "v0.1.0",
+            "scope": "required",
+            "hashes": [
+                {
+                    "alg": "SHA-256",
+                    "content": "4dcbe29acc06d74b1ec9ad746dba78022e1a189bb3527852ba839c68fbbd50d2"
+                }
+            ],
+            "purl": "pkg:golang/cloud.google.com/go/container@v0.1.0?type=module",
+            "evidence": {
+                "licenses": [
+                    {
+                        "license": {
+                            "id": "Apache-2.0"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "dependencies": [
+        {
+            "ref": "pkg:golang/k8s.io/minikube@v1.23.1?type=module",
+            "dependsOn": [
+                "pkg:golang/cloud.google.com/go/storage@v1.16.1?type=module",
+                "pkg:golang/contrib.go.opencensus.io/exporter/stackdriver@v0.12.1?type=module",
+                "pkg:golang/github.com/Delta456/box-cli-maker/v2@v2.2.2?type=module",
+                "pkg:golang/github.com/GoogleCloudPlatform/docker-credential-gcr@v0.0.0-20210713212222-faed5e8b8ca2?type=module",
+                "pkg:golang/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace@v0.16.0?type=module",
+                "pkg:golang/github.com/Parallels/docker-machine-parallels/v2@v2.0.1?type=module",
+                "pkg:golang/github.com/VividCortex/godaemon@v1.0.0?type=module",
+                "pkg:golang/github.com/alonyb/spinner@v1.12.7?type=module",
+                "pkg:golang/github.com/blang/semver/v4@v4.0.0?type=module",
+                "pkg:golang/github.com/cenkalti/backoff/v4@v4.1.1?type=module",
+                "pkg:golang/github.com/cheggaaa/pb/v3@v3.0.8?type=module",
+                "pkg:golang/github.com/cloudevents/sdk-go/v2@v2.5.0?type=module",
+                "pkg:golang/github.com/cloudfoundry-attic/jibber_jabber@v0.0.0-20151120183258-bcc4c8345a21?type=module",
+                "pkg:golang/github.com/docker/docker@v20.10.7+incompatible?type=module",
+                "pkg:golang/github.com/docker/go-units@v0.4.0?type=module",
+                "pkg:golang/github.com/golang-collections/collections@v0.0.0-20130729185459-604e922904d3?type=module",
+                "pkg:golang/github.com/google/go-containerregistry@v0.6.0?type=module",
+                "pkg:golang/github.com/google/go-github/v36@v36.0.0?type=module",
+                "pkg:golang/github.com/google/slowjam@v1.0.0?type=module",
+                "pkg:golang/github.com/google/uuid@v1.3.0?type=module",
+                "pkg:golang/github.com/hashicorp/go-getter@v1.5.8?type=module",
+                "pkg:golang/github.com/hooklift/iso9660@v0.0.0-20170318115843-1cf07e5970d8?type=module",
+                "pkg:golang/github.com/johanneswuerbach/nfsexports@v0.0.0-20200318065542-c48c3734757f?type=module",
+                "pkg:golang/github.com/juju/clock@v0.0.0-20190205081909-9c5c9712527c?type=module",
+                "pkg:golang/github.com/juju/fslock@v0.0.0-20160525022230-4d5c94c67b4b?type=module",
+                "pkg:golang/github.com/juju/mutex@v0.0.0-20180619145857-d21b13acf4bf?type=module",
+                "pkg:golang/github.com/kballard/go-shellquote@v0.0.0-20180428030007-95032a82bc51?type=module",
+                "pkg:golang/github.com/klauspost/cpuid@v1.2.0?type=module",
+                "pkg:golang/github.com/libvirt/libvirt-go@v3.9.0+incompatible?type=module",
+                "pkg:golang/github.com/machine-drivers/docker-machine-driver-vmware@v0.1.3?type=module",
+                "pkg:golang/github.com/machine-drivers/machine@v0.7.1-0.20210719174735-6eca26732baa?type=module",
+                "pkg:golang/github.com/mattbaird/jsonpatch@v0.0.0-20200820163806-098863c1fc24?type=module",
+                "pkg:golang/github.com/mattn/go-isatty@v0.0.14?type=module",
+                "pkg:golang/github.com/mitchellh/go-ps@v1.0.0?type=module",
+                "pkg:golang/github.com/moby/hyperkit@v0.0.0-20210108224842-2f061e447e14?type=module",
+                "pkg:golang/github.com/olekukonko/tablewriter@v0.0.5?type=module",
+                "pkg:golang/github.com/opencontainers/go-digest@v1.0.0?type=module",
+                "pkg:golang/github.com/otiai10/copy@v1.6.0?type=module",
+                "pkg:golang/github.com/pborman/uuid@v1.2.1?type=module",
+                "pkg:golang/github.com/phayes/freeport@v0.0.0-20180830031419-95f893ade6f2?type=module",
+                "pkg:golang/github.com/pkg/browser@v0.0.0-20160118053552-9302be274faa?type=module",
+                "pkg:golang/github.com/pkg/errors@v0.9.1?type=module",
+                "pkg:golang/github.com/pkg/profile@v0.0.0-20161223203901-3a8809bd8a80?type=module",
+                "pkg:golang/github.com/sayboras/dockerclient@v1.0.0?type=module",
+                "pkg:golang/github.com/shirou/gopsutil/v3@v3.21.8?type=module",
+                "pkg:golang/github.com/spf13/cobra@v1.2.1?type=module",
+                "pkg:golang/github.com/spf13/pflag@v1.0.5?type=module",
+                "pkg:golang/github.com/spf13/viper@v1.8.1?type=module",
+                "pkg:golang/github.com/xeipuuv/gojsonschema@v0.0.0-20180618132009-1d523034197f?type=module",
+                "pkg:golang/github.com/zchee/go-vmnet@v0.0.0-20161021174912-97ebf9174097?type=module",
+                "pkg:golang/go.opencensus.io@v0.23.0?type=module",
+                "pkg:golang/go.opentelemetry.io/otel@v0.17.0?type=module",
+                "pkg:golang/go.opentelemetry.io/otel/sdk@v0.16.0?type=module",
+                "pkg:golang/go.opentelemetry.io/otel/trace@v0.17.0?type=module",
+                "pkg:golang/golang.org/x/crypto@v0.0.0-20210322153248-0c34fe9e7dc2?type=module",
+                "pkg:golang/golang.org/x/exp@v0.0.0-20210220032938-85be41e4509f?type=module",
+                "pkg:golang/golang.org/x/mod@v0.5.0?type=module",
+                "pkg:golang/golang.org/x/oauth2@v0.0.0-20210819190943-2bc19b11175f?type=module",
+                "pkg:golang/golang.org/x/sync@v0.0.0-20210220032951-036812b2e83c?type=module",
+                "pkg:golang/golang.org/x/sys@v0.0.0-20210823070655-63515b42dcdf?type=module",
+                "pkg:golang/golang.org/x/term@v0.0.0-20210406210042-72f3dc4e9b72?type=module",
+                "pkg:golang/golang.org/x/text@v0.3.7?type=module",
+                "pkg:golang/gonum.org/v1/plot@v0.9.0?type=module",
+                "pkg:golang/google.golang.org/api@v0.56.0?type=module",
+                "pkg:golang/gopkg.in/yaml.v2@v2.4.0?type=module",
+                "pkg:golang/k8s.io/api@v0.21.2?type=module",
+                "pkg:golang/k8s.io/apimachinery@v0.21.2?type=module",
+                "pkg:golang/k8s.io/client-go@v0.21.2?type=module",
+                "pkg:golang/k8s.io/cluster-bootstrap@v0.21.2?type=module",
+                "pkg:golang/k8s.io/component-base@v0.21.2?type=module",
+                "pkg:golang/k8s.io/klog/v2@v2.20.0?type=module",
+                "pkg:golang/k8s.io/kubectl@v0.21.2?type=module",
+                "pkg:golang/k8s.io/kubernetes@v1.21.3?type=module",
+                "pkg:golang/sigs.k8s.io/sig-storage-lib-external-provisioner/v6@v6.3.0?type=module"
+            ]
+        },
+        {
+            "ref": "pkg:golang/cloud.google.com/go@v0.93.3?type=module",
+            "dependsOn": [
+                "pkg:golang/cloud.google.com/go/storage@v1.16.1?type=module",
+                "pkg:golang/github.com/golang/protobuf@v1.5.2?type=module",
+                "pkg:golang/github.com/googleapis/gax-go/v2@v2.1.0?type=module",
+                "pkg:golang/go.opencensus.io@v0.23.0?type=module",
+                "pkg:golang/golang.org/x/oauth2@v0.0.0-20210819190943-2bc19b11175f?type=module",
+                "pkg:golang/google.golang.org/api@v0.56.0?type=module",
+                "pkg:golang/google.golang.org/genproto@v0.0.0-20210828152312-66f60bf46e71?type=module",
+                "pkg:golang/google.golang.org/grpc@v1.40.0?type=module",
+                "pkg:golang/google.golang.org/protobuf@v1.27.1?type=module"
+            ]
+        },
+        {
+            "ref": "pkg:golang/cloud.google.com/go/container@v0.1.0?type=module",
+            "dependsOn": [
+                "pkg:golang/cloud.google.com/go@v0.93.3?type=module",
+                "pkg:golang/github.com/golang/protobuf@v1.5.2?type=module",
+                "pkg:golang/github.com/googleapis/gax-go/v2@v2.1.0?type=module",
+                "pkg:golang/google.golang.org/api@v0.56.0?type=module",
+                "pkg:golang/google.golang.org/genproto@v0.0.0-20210828152312-66f60bf46e71?type=module",
+                "pkg:golang/google.golang.org/grpc@v1.40.0?type=module",
+                "pkg:golang/google.golang.org/protobuf@v1.27.1?type=module"
+            ]
+        }
+    ]
+}
