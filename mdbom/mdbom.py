@@ -10,7 +10,7 @@ import logging
 import click
 
 from mdbom.bom.bom import ProcessingError
-from mdbom.bom.processor import get_packages_from_bom
+from mdbom.bom.processor import filter_packages_by_type, get_packages_from_bom
 from mdbom.md.md import GeneratingError, generate_markdown
 
 log_handler = logging.StreamHandler()
@@ -74,7 +74,10 @@ def generate(input_file, output_file, template_file, package_type):
         ClickException: In case invalid input is provided.
     """
     try:
-        packages = get_packages_from_bom(filename=input_file)
+        packages = filter_packages_by_type(
+            packages=get_packages_from_bom(filename=input_file),
+            package_type=package_type,
+        )
     except ProcessingError as pe:
         raise click.ClickException(pe)
 
