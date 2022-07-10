@@ -50,6 +50,7 @@ mkdocs = "^1.2.2"
 mkdocs-material = "^7.2.5"
 mike = "^1.0.1"
 bandit = "1.7.2"
+cyclonedx-bom = "^3.5.0"
 
 [tool.poetry.scripts]
 mdb = "mdbom.mdbom:cli"

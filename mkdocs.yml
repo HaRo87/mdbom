@@ -20,6 +20,7 @@ nav:
       - Markdown Report: markdown.md
     - License: license.md
     - Changelog: changelog.md
+    - 3rd Party Software: 3rd-party.md
   - Contributing: contributing.md
   - Author's Website: https://github.com/HaRo87
 

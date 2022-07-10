@@ -13,3 +13,4 @@ poetry.lock
 .venv/
 .vscode/
 coverage.xml
+.DS_Store
