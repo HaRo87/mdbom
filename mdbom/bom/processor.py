@@ -17,28 +17,34 @@ VERSION_ID = "version"
 PURL_ID = "purl"
 
 
-def get_packages_from_bom(filename: str = "") -> List[Package]:
+def get_packages_from_bom(filepath: str = "") -> List[Package]:
     """Get a list of packages from the BOM.
 
     Args:
-        filename: The path to the BOM file.
+        filepath: The path to the BOM file(s).
 
     Returns:
         A list of packages.
+
+    Raises:
+        ProcessingError: In case invalid input is provided.
     """
-    content = _load_bom(filename=filename)
     packages = []
-    for component in content[COMPONENTS_ID]:
-        packages.append(
-            Package(
-                component[NAME_ID],
-                component[VERSION_ID],
-                component[TYPE_ID],
-                ",".join(_extract_licenses(component)),
-                _extract_purl(component),
-                get_url(_extract_purl(component)),
-            ),
-        )
+    if filepath:
+        if os.path.isdir(filepath):
+            for filename in os.listdir(filepath):
+                if filename.endswith(".json"):
+                    packages.extend(
+                        _extract_packages(
+                            _load_bom(
+                                filename=os.path.join(filepath, filename),
+                            ),
+                        ),
+                    )
+        else:
+            packages.extend(_extract_packages(_load_bom(filename=filepath)))
+    else:
+        raise ProcessingError("No file provided")
     return packages
 
 
@@ -66,14 +72,27 @@ def filter_packages_by_type(
 
 
 def _load_bom(filename: str = "") -> Dict[Any, Any]:
-    if filename:
-        if os.path.exists(filename):
-            with open(filename, "r") as read_file:
-                return json.load(read_file)
-        else:
-            raise ProcessingError("Provided file does not exist")
+    if os.path.exists(filename):
+        with open(filename, "r") as read_file:
+            return json.load(read_file)
     else:
-        raise ProcessingError("No file provided")
+        raise ProcessingError("Provided file does not exist")
+
+
+def _extract_packages(content: Dict[Any, Any]) -> List[Package]:
+    packages = []
+    for component in content[COMPONENTS_ID]:
+        packages.append(
+            Package(
+                component[NAME_ID],
+                component[VERSION_ID],
+                component[TYPE_ID],
+                ",".join(_extract_licenses(component)),
+                _extract_purl(component),
+                get_url(_extract_purl(component)),
+            ),
+        )
+    return packages
 
 
 def _extract_licenses(component: Dict[Any, Any]) -> List[str]:
