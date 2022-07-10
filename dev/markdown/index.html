@@ -318,9 +318,69 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Markdown Report
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Markdown Report
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-template-for-your-markdown-report" class="md-nav__link">
+    Using a template for your markdown report
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-a-markdown-file-based-on-a-single-bom" class="md-nav__link">
+    Generating a markdown file based on a single BOM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-a-markdown-file-based-on-multiple-boms" class="md-nav__link">
+    Generating a markdown file based on multiple BOMs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering-specific-types" class="md-nav__link">
+    Filtering specific types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-package-managers" class="md-nav__link">
+    Supported package managers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -433,6 +493,49 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-template-for-your-markdown-report" class="md-nav__link">
+    Using a template for your markdown report
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-a-markdown-file-based-on-a-single-bom" class="md-nav__link">
+    Generating a markdown file based on a single BOM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-a-markdown-file-based-on-multiple-boms" class="md-nav__link">
+    Generating a markdown file based on multiple BOMs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering-specific-types" class="md-nav__link">
+    Filtering specific types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-package-managers" class="md-nav__link">
+    Supported package managers
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -449,19 +552,38 @@
                 
                 
                 <h1 id="how-to-generate-a-markdown-file">How to generate a markdown file<a class="headerlink" href="#how-to-generate-a-markdown-file" title="Permanent link">&para;</a></h1>
+<h2 id="using-a-template-for-your-markdown-report">Using a template for your markdown report<a class="headerlink" href="#using-a-template-for-your-markdown-report" title="Permanent link">&para;</a></h2>
 <p>You need a template file for generating a markdown file. 
 You can have a look at the <a href="https://github.com/HaRo87/mdbom/tree/develop/examples">examples</a>
 provided by the MdBOM project. </p>
+<p>The template can be specified via the <code>--template</code> option.</p>
+<h2 id="generating-a-markdown-file-based-on-a-single-bom">Generating a markdown file based on a single BOM<a class="headerlink" href="#generating-a-markdown-file-based-on-a-single-bom" title="Permanent link">&para;</a></h2>
 <p>Once you have a template and a BOM you should be able to generate
 a markdown file via</p>
-<pre><code class="language-bash">mdb generate --input bom.json --output 3rd-party.md --template template.md.jinja --type pypi
+<pre><code class="language-bash">mdb generate --input bom.json --output 3rd-party.md --template template.md.jinja
 </code></pre>
 <p>This will take the "bom.json" file as input, collect all relevant information and 
 use the "template.md.jinja" template to generate the "3rd-party.md" file.</p>
-<p>Currently, MdBOM does support the following two BOM types via the "--type" option:</p>
+<h2 id="generating-a-markdown-file-based-on-multiple-boms">Generating a markdown file based on multiple BOMs<a class="headerlink" href="#generating-a-markdown-file-based-on-multiple-boms" title="Permanent link">&para;</a></h2>
+<p>It is also possible to take multiple BOM files as input by simply providing
+a directory path via the <code>--input</code> option. If a directory is provided
+MdBOM tries to process all <code>.json</code> files in that directory. Make sure that
+only valid BOMs are present as JSON files in that directory.</p>
+<p>The complete command could look like:</p>
+<pre><code class="language-bash">mdb generate --input ./my-boms --output 3rd-party.md --template template.md.jinja
+</code></pre>
+<h2 id="filtering-specific-types">Filtering specific types<a class="headerlink" href="#filtering-specific-types" title="Permanent link">&para;</a></h2>
+<p>In case you are using multiple BOM files, coming from different ecosystems, you can 
+apply a filter, via the <code>--type</code> option, which will only return information which matches the specified type.</p>
+<p>The complete command could look like:</p>
+<pre><code class="language-bash">mdb generate --input ./my-boms --output 3rd-party.md --template template.md.jinja --type pypi
+</code></pre>
+<h2 id="supported-package-managers">Supported package managers<a class="headerlink" href="#supported-package-managers" title="Permanent link">&para;</a></h2>
+<p>Currently, MdBOM supports the following package manager types:</p>
 <ul>
 <li>pypi</li>
 <li>npm </li>
+<li>golang</li>
 </ul>
                 
               
