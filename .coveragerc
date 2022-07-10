@@ -1,0 +1,7 @@
+[run]
+source = mdbom
+
+[report]
+omit = 
+    */__init__.py
+    tests/*

@@ -10,8 +10,7 @@ import logging
 import click
 
 from mdbom.bom.bom import ProcessingError
-from mdbom.bom.npm import NpmProcessor
-from mdbom.bom.pypi import PyPiProcessor
+from mdbom.bom.processor import filter_packages_by_type, get_packages_from_bom
 from mdbom.md.md import GeneratingError, generate_markdown
 
 log_handler = logging.StreamHandler()
@@ -22,9 +21,6 @@ log_handler.setFormatter(log_formatter)
 logging.basicConfig(level=logging.NOTSET, handlers=[log_handler])
 
 logger = logging.getLogger("MdBOM")
-
-PYPI_PROCESSOR_NAME = "pypi"
-NPM_PROCESSOR_NAME = "npm"
 
 
 @click.group()
@@ -60,49 +56,30 @@ def info():
 )
 @click.option(
     "--type",
-    "proc_type",
-    default="pypi",
-    help="The processors used for generation (pypi/npm)",
+    "package_type",
+    default="",
+    help="Can be used to focus on a single package type e.g. pypi.",
 )
-def generate(input_file, output_file, template_file, proc_type):
+def generate(input_file, output_file, template_file, package_type):
     """Processes a given BOM file and generates the markdown file.
 
     Args:
-        input_file: The input_file holding the BOM info.
-        output_file: The output_file where the result should be stored.
-        template_file: The template_file to be used for markdown generation.
-        proc_type: The processor type which is used to process the BOM file.
+        input_file:     The input_file holding the BOM info.
+        output_file:    The output_file where the result should be stored.
+        template_file:  The template_file to be used for markdown generation.
+        package_type:   Can be used to set the focus on a specific package
+                        type like pypi
 
     Raises:
         ClickException: In case invalid input is provided.
     """
-    processors = {}
     try:
-        processors[PYPI_PROCESSOR_NAME] = PyPiProcessor()
-    except ProcessingError as pie:
-        raise click.ClickException(pie)
-
-    try:
-        processors[NPM_PROCESSOR_NAME] = NpmProcessor()
-    except ProcessingError as npe:
-        raise click.ClickException(npe)
-
-    if proc_type not in processors:
-        raise click.ClickException(
-            "Invalid processor provided, check --help for available ones",
+        packages = filter_packages_by_type(
+            packages=get_packages_from_bom(filename=input_file),
+            package_type=package_type,
         )
-
-    try:
-        packages = processors[proc_type].get_packages_from_bom(
-            filename=input_file,
-        )
-    except ProcessingError as pge:
-        raise click.ClickException(pge)
-
-    try:
-        packages = processors[proc_type].construct_urls(packages=packages)
-    except ProcessingError as pce:
-        raise click.ClickException(pce)
+    except ProcessingError as pe:
+        raise click.ClickException(pe)
 
     try:
         generate_markdown(

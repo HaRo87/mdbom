@@ -4,7 +4,7 @@ __pycache__/
 dist/
 *.egg-info/
 build/
-.coverage*
+.coverage
 pip-wheel-metadata/
 .pytest_cache/
 .mypy_cache/
@@ -13,3 +13,4 @@ poetry.lock
 .venv/
 .vscode/
 coverage.xml
+.DS_Store

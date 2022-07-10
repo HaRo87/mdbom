@@ -32,6 +32,7 @@ class TestGenerator(TestCase):
                 "0.1.0",
                 "lib",
                 "MIT",
+                "pkg:pypi/some-package_1.2.3",
                 "https://some.url",
             ),
         ]

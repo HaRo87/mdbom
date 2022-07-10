@@ -1,0 +1,7 @@
+
+### 3rd Party Software
+
+| Name | Version | Type | URL |
+| ---- | ------- | ---- | --- |
+{% for package in packages %}| {{ package.name }} | {{ package.version }} | {{ package.kind }} | {{ package.url }} |
+{% endfor %}
