@@ -117,26 +117,6 @@ class TestProcessor(TestCase):
     def test_get_packages_multiple_boms_success(self):
         packages = get_packages_from_bom(filepath=self.input_dir)
         self.assertEqual(6, len(packages))
-        self.assertEqual("cloud.google.com/go", packages[0].name)
-        self.assertEqual("cloud.google.com/go/container", packages[1].name)
-        self.assertEqual("eslint", packages[2].name)
-        self.assertEqual("MIT", packages[2].licenses)
-        self.assertEqual("library", packages[2].kind)
-        self.assertEqual("7.27.0", packages[2].version)
-        self.assertEqual("pkg:npm/eslint@7.27.0", packages[2].purl)
-        self.assertEqual(
-            "https://www.npmjs.com/package/eslint/v/7.27.0", packages[2].url
-        )
-        self.assertEqual("argcomplete", packages[3].name)
-        self.assertEqual("Apache Software License", packages[3].licenses)
-        self.assertEqual("library", packages[3].kind)
-        self.assertEqual("1.12.2", packages[3].version)
-        self.assertEqual("pkg:pypi/argcomplete@1.12.2", packages[3].purl)
-        self.assertEqual(
-            "https://pypi.org/project/argcomplete/1.12.2", packages[3].url
-        )
-        self.assertEqual("certifi", packages[4].name)
-        self.assertEqual("click", packages[5].name)
 
     def test_filter_packages_by_type_no_type_returns_all(self):
         packages = packages = [
