@@ -8,6 +8,7 @@ TYPE_GROUP_ID = "type"
 REST_GROUP_ID = "rest"
 NPM_TYPE = "npm"
 GOLANG_TYPE = "golang"
+NUGET_TYPE = "nuget"
 
 logger = logging.getLogger("MdBOM")
 
@@ -17,6 +18,7 @@ url_types = {
     "pypi": "https://pypi.org/project/",
     "npm": "https://www.npmjs.com/package/",
     "golang": "https://pkg.go.dev/",
+    "nuget": "https://www.nuget.org/packages/",
 }
 
 
