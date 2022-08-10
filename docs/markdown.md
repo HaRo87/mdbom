@@ -51,4 +51,4 @@ Currently, MdBOM supports the following package manager types:
 - pypi
 - npm 
 - golang
-
+- nuget

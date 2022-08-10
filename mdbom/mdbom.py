@@ -58,7 +58,7 @@ def info():
     "--type",
     "package_type",
     default="",
-    help="Can be used to focus on a single package type [pypi|npm|golang].",
+    help="Can be used to focus on a single package type [pypi|npm|golang|nuget].",
 )
 def generate(input_path, output_file, template_file, package_type):
     """Processes a given BOM file and generates the markdown file.

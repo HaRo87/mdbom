@@ -14,6 +14,7 @@ class TestURLs(TestCase):
     unsupported_purl_type = "pkg:mypackage/some-package_1.2.3"
     valid_pypi_purl = "pkg:pypi/django@1.11.1"
     valid_npm_purl = "pkg:npm/foobar@12.3.1"
+    valid_nuget_purl = "pkg:nuget/foobar@3.13.3"
 
     def test_get_package_and_version_empty_return_due_to_invalid_purl(self):
         package, version = _get_package_and_version(self.invalid_purl_rest)
@@ -61,6 +62,10 @@ class TestURLs(TestCase):
     def test_convert_purl_to_url_npm_success(self):
         res = _convert_purl_to_url(self.valid_npm_purl, "npm")
         self.assertEqual("https://www.npmjs.com/package/foobar/v/12.3.1", res)
+
+    def test_convert_purl_to_url_nuget_success(self):
+        res = _convert_purl_to_url(self.valid_nuget_purl, "nuget")
+        self.assertEqual("https://www.nuget.org/packages/foobar/3.13.3", res)
 
     def test_get_url_fails_due_to_unsupported_purl_type(self):
         with LogCapture() as log:
