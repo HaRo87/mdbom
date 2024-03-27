@@ -1,0 +1,42 @@
+{
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.4",
+    "serialNumber": "urn:uuid:bb095efe-b844-436e-912a-17cc7b27a2b0",
+    "version": 1,
+    "components": [
+        {
+            "bom-ref": "pkg:pub/dio@5.4.2",
+            "type": "library",
+            "name": "dio",
+            "version": "5.4.2",
+            "scope": "required",
+            "purl": "pkg:pub/dio@5.4.2",
+            "evidence": {
+                "licenses": [
+                    {
+                        "license": {
+                            "id": "MIT"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "bom-ref": "pkg:pub/riverpod@2.5.1",
+            "type": "library",
+            "name": "riverpod",
+            "version": "2.5.1",
+            "scope": "required",
+            "purl": "pkg:pub/riverpod@2.5.1",
+            "evidence": {
+                "licenses": [
+                    {
+                        "license": {
+                            "id": "MIT"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

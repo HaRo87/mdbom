@@ -113,6 +113,22 @@ class TestProcessor(TestCase):
             "https://pkg.go.dev/cloud.google.com/go@v0.93.3", packages[0].url
         )
         self.assertEqual("cloud.google.com/go/container", packages[1].name)
+    
+    def test_get_packages_pub_bom_success(self):
+        packages = get_packages_from_bom(
+            filepath=self.input_dir / "bom-pub.json"
+        )
+        self.assertEqual("dio", packages[0].name)
+        self.assertEqual("library", packages[0].kind)
+        self.assertEqual("5.4.2", packages[0].version)
+        self.assertEqual(
+            "pkg:pub/dio@5.4.2",
+            packages[0].purl,
+        )
+        self.assertEqual(
+            "https://pub.dev/packages/dio/versions/5.4.2", packages[0].url
+        )
+        self.assertEqual("riverpod", packages[1].name)
 
     def test_get_packages_multiple_boms_success(self):
         packages = get_packages_from_bom(filepath=self.input_dir)
