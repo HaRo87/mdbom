@@ -8,6 +8,7 @@ TYPE_GROUP_ID = "type"
 REST_GROUP_ID = "rest"
 NPM_TYPE = "npm"
 GOLANG_TYPE = "golang"
+PUB_TYPE = "pub"
 
 logger = logging.getLogger("MdBOM")
 
@@ -17,6 +18,7 @@ url_types = {
     "pypi": "https://pypi.org/project/",
     "npm": "https://www.npmjs.com/package/",
     "golang": "https://pkg.go.dev/",
+    "pub": "https://pub.dev/packages/"
 }
 
 
@@ -94,6 +96,8 @@ def _convert_purl_to_url(purl, purl_type: str) -> str:
             url += "{0}/v/{1}".format(package, version)
         elif purl_type == GOLANG_TYPE:
             url += "{0}@{1}".format(package, version)
+        elif purl_type == PUB_TYPE:
+            url += "{0}/versions/{1}".format(package, version)
         else:
             url += "{0}/{1}".format(package, version)
     else:
